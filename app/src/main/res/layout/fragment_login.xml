@@ -1,5 +1,6 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -15,4 +16,38 @@
 		android:visibility="visible"
 		android:id="@+id/textView3"/>
 
-</RelativeLayout>
+	<EditText
+		android:padding="@dimen/gap_medium"
+		android:layout_marginLeft="@dimen/gap_medium"
+		android:layout_marginTop="@dimen/gap_medium"
+		android:layout_marginRight="@dimen/gap_medium"
+		android:hint="@string/login_hint"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:singleLine="true"
+		android:clickable="false"/>
+
+	<EditText
+		android:padding="@dimen/gap_medium"
+		android:layout_marginLeft="@dimen/gap_medium"
+		android:layout_marginTop="@dimen/gap_medium"
+		android:layout_marginRight="@dimen/gap_medium"
+		android:hint="@string/password_hint"
+		android:inputType="textPassword"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:singleLine="true"/>
+
+	<Button
+		android:padding="@dimen/gap_medium"
+		android:layout_marginLeft="@dimen/gap_medium"
+		android:layout_marginTop="@dimen/gap_medium"
+		android:layout_marginRight="@dimen/gap_medium"
+		android:text="Login"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@android:color/holo_blue_dark"
+		android:textColor="@android:color/white"
+		/>
+
+</LinearLayout>

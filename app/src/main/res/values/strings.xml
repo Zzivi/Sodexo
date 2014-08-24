@@ -3,5 +3,7 @@
 
     <string name="app_name">Sodexo</string>
     <string name="hello_world">Hello world!</string>
+	<string name="login_hint">username</string>
+	<string name="password_hint">password</string>
 
 </resources>
