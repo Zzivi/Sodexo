@@ -4,6 +4,7 @@ import com.path.android.jobqueue.JobManager;
 import com.path.android.jobqueue.Params;
 import com.zzivi.sodexo.base.domain.interactor.MainThread;
 import com.zzivi.sodexo.base.domain.interactor.imp.UserCaseJob;
+import com.zzivi.sodexo.login.datasource.LoginDataSource;
 import com.zzivi.sodexo.login.domain.callback.LoginCallback;
 import com.zzivi.sodexo.login.domain.model.LoginCredentials;
 import com.zzivi.sodexo.login.domain.usercase.Login;
@@ -16,18 +17,18 @@ import javax.inject.Inject;
 public class LoginJob extends UserCaseJob implements Login {
     private LoginCredentials loginCredentials ;
     private LoginCallback callback;
-    //private LoginDataSource loginDataSource;
+    private LoginDataSource loginDataSource;
 
     private static final String LOGTAG = "LoginJob";
 
     @Inject
-    protected LoginJob(JobManager jobManager, MainThread mainThread) {
+    protected LoginJob(JobManager jobManager, MainThread mainThread, LoginDataSource loginDataSource) {
         super(jobManager, mainThread, new Params(UserCaseJob.DEFAULT_PRIORITY));
-        //this.loginDataSource = loginDataSource;
+        this.loginDataSource = loginDataSource;
     }
 
     @Override
-    public void login(LoginCredentials loginCredentials ,LoginCallback callback) {
+    public void login(LoginCredentials loginCredentials, LoginCallback callback) {
         this.loginCredentials = loginCredentials;
         this.callback = callback;
         jobManager.addJob(this);
@@ -36,7 +37,7 @@ public class LoginJob extends UserCaseJob implements Login {
     @Override
     public void doRun() throws Throwable {
         //try {
-            //loginDataSource.getTokens(loginCredentials);
+            loginDataSource.getLegalNumber(loginCredentials);
             System.out.println("Loginnnnnnn");
             notifyLoginComplete(true);
         //}catch (ApiGeneralErrorException e){
