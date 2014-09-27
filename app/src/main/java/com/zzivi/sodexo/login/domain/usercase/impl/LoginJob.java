@@ -38,7 +38,6 @@ public class LoginJob extends UserCaseJob implements Login {
     public void doRun() throws Throwable {
         //try {
             loginDataSource.getLegalNumber(loginCredentials);
-            System.out.println("Loginnnnnnn");
             notifyLoginComplete(true);
         //}catch (ApiGeneralErrorException e){
         //   domainErrorHandler.notifyError(new GeneralErrorEvent(e.getMessage()));
