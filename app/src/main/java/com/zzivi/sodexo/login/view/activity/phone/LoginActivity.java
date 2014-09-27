@@ -17,7 +17,7 @@ public class LoginActivity extends BaseActivity {
 		setContentView(R.layout.activity_login);
 		if (savedInstanceState == null) {
             loginFragment = new LoginFragment();
-			getFragmentManager().beginTransaction()
+            getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, loginFragment)
 					.commit();
 		}

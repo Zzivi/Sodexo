@@ -17,6 +17,7 @@
 		android:id="@+id/textView3"/>
 
 	<EditText
+        android:id="@+id/et_login_user"
 		android:padding="@dimen/gap_medium"
 		android:layout_marginLeft="@dimen/gap_medium"
 		android:layout_marginTop="@dimen/gap_medium"
@@ -28,6 +29,7 @@
 		android:clickable="false"/>
 
 	<EditText
+        android:id="@+id/et_login_password"
 		android:padding="@dimen/gap_medium"
 		android:layout_marginLeft="@dimen/gap_medium"
 		android:layout_marginTop="@dimen/gap_medium"
@@ -39,6 +41,7 @@
 		android:singleLine="true"/>
 
 	<Button
+        android:id="@+id/bt_login"
 		android:padding="@dimen/gap_medium"
 		android:layout_marginLeft="@dimen/gap_medium"
 		android:layout_marginTop="@dimen/gap_medium"
@@ -46,7 +49,6 @@
 		android:text="Login"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="@android:color/holo_blue_dark"
 		android:textColor="@android:color/white"
 		/>
 

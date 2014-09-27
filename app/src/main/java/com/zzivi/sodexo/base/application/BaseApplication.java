@@ -2,7 +2,9 @@ package com.zzivi.sodexo.base.application;
 
 import android.app.Application;
 
+import com.zzivi.sodexo.base.domain.GlobalDomainModule;
 import com.zzivi.sodexo.base.utils.module.AndroidModule;
+import com.zzivi.sodexo.login.domain.LoginDomainModule;
 import com.zzivi.sodexo.login.view.model.LoginViewModule;
 
 import java.util.Arrays;
@@ -24,7 +26,7 @@ public class BaseApplication extends Application {
     }
 
     protected List<Object> getModules() {
-        return Arrays.asList(new AndroidModule(this), new LoginViewModule());
+        return Arrays.asList(new AndroidModule(this), new GlobalDomainModule(), new LoginViewModule(), new LoginDomainModule());
     }
 
     public void inject(Object object) {
