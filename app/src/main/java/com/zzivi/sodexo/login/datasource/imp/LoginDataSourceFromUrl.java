@@ -1,10 +1,9 @@
 package com.zzivi.sodexo.login.datasource.imp;
 
-import com.zzivi.sodexo.base.datasource.login.imp.LoginCookieDataSourceSharedPreferences;
+import com.zzivi.sodexo.base.datasource.httpurl.sharedpreferences.imp.LoginCookieDataSourceSharedPreferences;
 import com.zzivi.sodexo.login.datasource.LoginDataSource;
 import com.zzivi.sodexo.login.datasource.httpurl.LoginHttpUrl;
 import com.zzivi.sodexo.login.datasource.httpurl.model.HttpUrlResultModel;
-import com.zzivi.sodexo.login.datasource.httpurl.model.LoginRequestUrlModel;
 import com.zzivi.sodexo.login.domain.mapper.LoginMapper;
 import com.zzivi.sodexo.login.domain.model.LoginCredentials;
 

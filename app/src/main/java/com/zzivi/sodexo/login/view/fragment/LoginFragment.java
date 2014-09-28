@@ -67,6 +67,7 @@ public class LoginFragment extends BaseFragment implements LoginController.View{
         if(username.getText().length()!=0) {
             if (password.getText().length() != 0) {
                 controller.login(username.getText().toString(), password.getText().toString());
+                controller.openCardsBalance(getActivity());
             }
         }
     }

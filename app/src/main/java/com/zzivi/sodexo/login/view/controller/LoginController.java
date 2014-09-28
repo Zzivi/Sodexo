@@ -1,5 +1,9 @@
 package com.zzivi.sodexo.login.view.controller;
 
+import android.app.Activity;
+import android.content.Intent;
+
+import com.zzivi.sodexo.cardsbalance.view.activity.phone.CardsBalanceActivity;
 import com.zzivi.sodexo.login.domain.callback.LoginCallback;
 import com.zzivi.sodexo.login.domain.model.LoginCredentials;
 import com.zzivi.sodexo.login.domain.usercase.Login;
@@ -33,6 +37,12 @@ public class LoginController {
         credentials.setPassword(password);
         login.login(credentials, loginCompleteCallback );
     }
+
+    public void openCardsBalance(Activity context) {
+        Intent intent = new Intent(context, CardsBalanceActivity.class);
+        context.startActivity(intent);
+    }
+
 
     public void setView(View view) {
         this.view = view;

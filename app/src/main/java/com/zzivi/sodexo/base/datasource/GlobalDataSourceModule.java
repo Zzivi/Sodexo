@@ -1,7 +1,7 @@
 package com.zzivi.sodexo.base.datasource;
 
-import com.zzivi.sodexo.base.datasource.login.LoginCookieDataSource;
-import com.zzivi.sodexo.base.datasource.login.imp.LoginCookieDataSourceSharedPreferences;
+import com.zzivi.sodexo.base.datasource.httpurl.sharedpreferences.LoginCookieDataSource;
+import com.zzivi.sodexo.base.datasource.httpurl.sharedpreferences.imp.LoginCookieDataSourceSharedPreferences;
 
 import dagger.Module;
 import dagger.Provides;

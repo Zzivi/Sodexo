@@ -1,4 +1,4 @@
-package com.zzivi.sodexo.base.datasource.login;
+package com.zzivi.sodexo.base.datasource.httpurl.sharedpreferences;
 
 import com.zzivi.sodexo.login.datasource.httpurl.model.HttpUrlResultModel;
 
@@ -7,5 +7,7 @@ import com.zzivi.sodexo.login.datasource.httpurl.model.HttpUrlResultModel;
  */
 public interface LoginCookieDataSource {
     public void storeLoginCookie(HttpUrlResultModel httpUrlResultModel);
+
+    public HttpUrlResultModel obtainLoginCookie();
 
 }
