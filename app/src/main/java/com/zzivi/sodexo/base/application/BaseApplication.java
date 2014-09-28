@@ -2,6 +2,7 @@ package com.zzivi.sodexo.base.application;
 
 import android.app.Application;
 
+import com.zzivi.sodexo.base.datasource.GlobalDataSourceModule;
 import com.zzivi.sodexo.base.domain.GlobalDomainModule;
 import com.zzivi.sodexo.base.utils.module.AndroidModule;
 import com.zzivi.sodexo.login.datasource.LoginDataSourceModule;
@@ -27,7 +28,7 @@ public class BaseApplication extends Application {
     }
 
     protected List<Object> getModules() {
-        return Arrays.asList(new AndroidModule(this), new GlobalDomainModule(),
+        return Arrays.asList(new AndroidModule(this), new GlobalDomainModule(), new GlobalDataSourceModule(),
                 new LoginViewModule(), new LoginDomainModule(), new LoginDataSourceModule());
     }
 
