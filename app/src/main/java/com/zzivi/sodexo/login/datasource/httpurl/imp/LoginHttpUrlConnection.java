@@ -1,4 +1,8 @@
-package com.zzivi.sodexo.login.datasource.imp;
+package com.zzivi.sodexo.login.datasource.httpurl.imp;
+
+import com.zzivi.sodexo.login.datasource.httpurl.LoginHttpUrl;
+import com.zzivi.sodexo.login.datasource.httpurl.model.HttpUrlResultModel;
+import com.zzivi.sodexo.login.datasource.httpurl.model.LoginRequestUrlModel;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,6 +12,7 @@ import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.CookieHandler;
@@ -18,41 +23,61 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 
 /**
  * Created by daniel on 27/09/14.
+ *
+ * http://www.mkyong.com/java/how-to-automate-login-a-website-java-example/
  */
-public class HttpUrlConnection {
+public class LoginHttpUrlConnection implements LoginHttpUrl {
 
     private List<String> cookies;
     private HttpURLConnection conn;
 
     private final String USER_AGENT = "Mozilla/5.0";
+    private final String HOME_URL = "http://www.mysodexo.es";
+    private final String LOGIN_URL = "http://www.mysodexo.es/login";
+    private final String CARDS_BALANCE_URL = "http://www.mysodexo.es/includes/modulo-saldos-tarjeta.php";
 
-    public static void main(String[] args) throws Exception {
-        String loginUrl = "http://www.mysodexo.es";
-        String cardsUrl = "http://www.mysodexo.es/includes/modulo-saldos-tarjeta.php";
 
-        HttpUrlConnection http = new HttpUrlConnection();
+    public List<String> getCookies() {
+        return cookies;
+    }
 
-        // make sure cookies is turn on
-        CookieHandler.setDefault(new CookieManager());
-
-        // 1. Send a "GET" request, so that you can extract the form's data.
-        String page = http.GetPageContent(loginUrl);
-        String postParams = http.getFormParams(page, "daniel.viorreta@gmail.com", "Ch1jk123");
-
-        // 2. Construct above post's content and then send a POST request for
-        // authentication
-        http.sendPost(loginUrl + "/login", postParams);
-
-        // 3. success then go to gmail.
-        String result = http.GetPageContent(cardsUrl);
-        System.out.println(result);
+    public void setCookies(List<String> cookies) {
+        this.cookies = cookies;
     }
 
 
-    private void sendPost(String url, String postParams) throws Exception {
+    @Inject
+    public LoginHttpUrlConnection() {
+    }
+
+
+    @Override
+    public HttpUrlResultModel obtainCookies(LoginRequestUrlModel loginRequestUrlModel) throws IOException {
+        // make sure cookies is turn on
+        CookieHandler.setDefault(new CookieManager());
+        // 1. Send a "GET" request, so that you can extract the form's data.
+        String page = getPageContent(HOME_URL);
+        String postParams = getFormParams(page,
+                loginRequestUrlModel.getUsername(), loginRequestUrlModel.getPassword());
+        // 2. Construct above post's content and then send a POST request for
+        // authentication
+        sendPost(LOGIN_URL, postParams);
+        HttpUrlResultModel httpUrlResultModel = new HttpUrlResultModel();
+        httpUrlResultModel.setCookies(cookies);
+        return httpUrlResultModel;
+        //HttpUrlResultModel
+
+        // 3. success then go to cards balance.
+        //String result = getPageContent(CARDS_BALANCE_URL);
+        //System.out.println(result);
+    }
+
+    private void sendPost(String url, String postParams) throws IOException {
 
         URL obj = new URL(url);
         conn = (HttpURLConnection) obj.openConnection();
@@ -101,7 +126,7 @@ public class HttpUrlConnection {
 
     }
 
-    private String GetPageContent(String url) throws Exception {
+    private String getPageContent(String url) throws IOException {
 
         URL obj = new URL(url);
         conn = (HttpURLConnection) obj.openConnection();
@@ -179,13 +204,5 @@ public class HttpUrlConnection {
             }
         }
         return result.toString();
-    }
-
-    public List<String> getCookies() {
-        return cookies;
-    }
-
-    public void setCookies(List<String> cookies) {
-        this.cookies = cookies;
     }
 }

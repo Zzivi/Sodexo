@@ -1,5 +1,7 @@
 package com.zzivi.sodexo.login.datasource;
 
+import com.zzivi.sodexo.login.datasource.httpurl.LoginHttpUrl;
+import com.zzivi.sodexo.login.datasource.httpurl.imp.LoginHttpUrlConnection;
 import com.zzivi.sodexo.login.datasource.imp.LoginDataSourceFromUrl;
 import com.zzivi.sodexo.login.domain.mapper.LoginMapper;
 
@@ -22,4 +24,7 @@ public class LoginDataSourceModule {
 
     @Provides
     public LoginMapper provideLoginMapper() { return new LoginMapper(); }
+
+    @Provides
+    public LoginHttpUrl provideLoginHttpUrl(LoginHttpUrlConnection loginHttpUrlConnection) { return loginHttpUrlConnection; }
 }

@@ -1,6 +1,6 @@
 package com.zzivi.sodexo.login.domain.mapper;
 
-import com.zzivi.sodexo.login.datasource.model.LoginRequestUrlModel;
+import com.zzivi.sodexo.login.datasource.httpurl.model.LoginRequestUrlModel;
 import com.zzivi.sodexo.login.domain.model.LoginCredentials;
 
 /**

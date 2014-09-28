@@ -37,7 +37,8 @@ public class LoginJob extends UserCaseJob implements Login {
     @Override
     public void doRun() throws Throwable {
         //try {
-            loginDataSource.getLegalNumber(loginCredentials);
+        System.out.println("Login en domain!!!");
+            loginDataSource.getCookies(loginCredentials);
             notifyLoginComplete(true);
         //}catch (ApiGeneralErrorException e){
         //   domainErrorHandler.notifyError(new GeneralErrorEvent(e.getMessage()));

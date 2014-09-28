@@ -1,4 +1,4 @@
-package com.zzivi.sodexo.login.datasource.model;
+package com.zzivi.sodexo.login.datasource.httpurl.model;
 
 /**
  * Created by daniel on 27/09/14.

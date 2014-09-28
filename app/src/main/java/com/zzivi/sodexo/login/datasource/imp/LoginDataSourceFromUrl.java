@@ -1,9 +1,13 @@
 package com.zzivi.sodexo.login.datasource.imp;
 
 import com.zzivi.sodexo.login.datasource.LoginDataSource;
-import com.zzivi.sodexo.login.datasource.model.LoginRequestUrlModel;
+import com.zzivi.sodexo.login.datasource.httpurl.LoginHttpUrl;
+import com.zzivi.sodexo.login.datasource.httpurl.model.HttpUrlResultModel;
+import com.zzivi.sodexo.login.datasource.httpurl.model.LoginRequestUrlModel;
 import com.zzivi.sodexo.login.domain.mapper.LoginMapper;
 import com.zzivi.sodexo.login.domain.model.LoginCredentials;
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -12,26 +16,22 @@ import javax.inject.Inject;
  */
 public class LoginDataSourceFromUrl implements LoginDataSource {
     public final LoginMapper loginMapper;
+    public final LoginHttpUrl loginHttpUrl;
 
     @Inject
-    public LoginDataSourceFromUrl(LoginMapper loginMapper) {
+    public LoginDataSourceFromUrl(LoginMapper loginMapper, LoginHttpUrl loginHttpUrl) {
         this.loginMapper = loginMapper;
+        this.loginHttpUrl = loginHttpUrl;
     }
 
-    public boolean getLegalNumber(LoginCredentials loginCredentials){
+    public boolean getCookies(LoginCredentials loginCredentials) throws IOException {
 
-        String legalNumber = getLegalNumber(loginMapper.transform(loginCredentials));
-        System.out.println("Legal number: " + legalNumber);
-        //this.storeOauthAuthorize.storeOauthAuthorize(oauthAuthorizeResultApiModel);
+        HttpUrlResultModel httpUrlResultModel = loginHttpUrl.obtainCookies(loginMapper.transform(loginCredentials));
+        //store cookies
 
         return true;
     }
 
 
-    public String getLegalNumber(LoginRequestUrlModel loginRequestUrl){
 
-        return "2abHcER4W3Y2abW3Y2abH3Y2abHcrCsXAwBbHcERd0sXAwByzgOhijklfgOhijk";
-
-        //this.storeOauthAuthorize.storeOauthAuthorize(oauthAuthorizeResultApiModel);
-    }
 }
