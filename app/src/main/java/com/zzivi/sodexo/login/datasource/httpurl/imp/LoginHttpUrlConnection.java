@@ -20,7 +20,10 @@ import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -55,9 +58,23 @@ public class LoginHttpUrlConnection implements LoginHttpUrl {
     public LoginHttpUrlConnection() {
     }
 
+    public static void main(String[] args) throws Exception{
+        LoginHttpUrl loginHttpUrl = new LoginHttpUrlConnection();
+
+        LoginRequestUrlModel loginRequestUrlModel = new LoginRequestUrlModel();
+        loginRequestUrlModel.setUsername("daniel.viorreta@gmail.com");
+        loginRequestUrlModel.setPassword("Ch1jk123");
+
+        loginHttpUrl.obtainCookies(loginRequestUrlModel);
+    }
+
 
     @Override
     public HttpUrlResultModel obtainCookies(LoginRequestUrlModel loginRequestUrlModel) throws IOException {
+        // print current time
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        System.out.println(dateFormat.format(cal.getTime()));
         // make sure cookies is turn on
         CookieHandler.setDefault(new CookieManager());
         // 1. Send a "GET" request, so that you can extract the form's data.
@@ -69,12 +86,17 @@ public class LoginHttpUrlConnection implements LoginHttpUrl {
         sendPost(LOGIN_URL, postParams);
         HttpUrlResultModel httpUrlResultModel = new HttpUrlResultModel();
         httpUrlResultModel.setCookies(cookies);
-        return httpUrlResultModel;
+
         //HttpUrlResultModel
 
         // 3. success then go to cards balance.
-        //String result = getPageContent(CARDS_BALANCE_URL);
-        //System.out.println(result);
+        String result = getPageContent(CARDS_BALANCE_URL);
+        System.out.println(result);
+        // print current time
+        cal = Calendar.getInstance();
+        System.out.println(dateFormat.format(cal.getTime()));
+
+        return httpUrlResultModel;
     }
 
     private void sendPost(String url, String postParams) throws IOException {
@@ -90,10 +112,12 @@ public class LoginHttpUrlConnection implements LoginHttpUrl {
         conn.setRequestProperty("Accept",
                 "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
         conn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-        for (String cookie : this.cookies) {
-            conn.addRequestProperty("Cookie", cookie.split(";", 1)[0]);
+        if (cookies != null) {
+            for (String cookie : this.cookies) {
+                conn.addRequestProperty("Cookie", cookie.split(";", 1)[0]);
+            }
         }
-        conn.setRequestProperty("Connection", "keep-alive");
+        //conn.setRequestProperty("Connection", "keep-alive");
         conn.setRequestProperty("Accept-Encoding", "gzip-deflate");
         conn.setRequestProperty("Referer", "http://www.mysodexo.es/");
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
@@ -112,18 +136,6 @@ public class LoginHttpUrlConnection implements LoginHttpUrl {
         System.out.println("\nSending 'POST' request to URL : " + url);
         System.out.println("Post parameters : " + postParams);
         System.out.println("Response Code : " + responseCode);
-
-        BufferedReader in =
-                new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-        //System.out.println(response.toString());
-
     }
 
     private String getPageContent(String url) throws IOException {
@@ -142,7 +154,7 @@ public class LoginHttpUrlConnection implements LoginHttpUrl {
         conn.setRequestProperty("Accept",
                 "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
         conn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-        conn.setRequestProperty("Connection", "keep-alive");
+        //conn.setRequestProperty("Connection", "keep-alive");
         conn.setRequestProperty("Accept-Encoding", "gzip-deflate");
         if (cookies != null) {
             for (String cookie : this.cookies) {

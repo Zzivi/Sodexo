@@ -37,6 +37,7 @@ public class LoginCookieDataSourceSharedPreferences implements LoginCookieDataSo
                 i++;
             }
         }
+        editor.commit();
     }
 
     @Override

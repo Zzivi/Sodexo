@@ -11,16 +11,22 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.inject.Inject;
+
 /**
  * Created by daniel on 28/09/14.
  */
 public class HttpRequestDataSourceImpl implements HttpRequestDataSource {
+
+    @Inject
+    public HttpRequestDataSourceImpl() {}
+
     public HttpUrlResultModel obtainLoginCookie(LoginHttpUrl loginHttpUrl, LoginRequestUrlModel loginRequestUrlModel) throws IOException {
         return loginHttpUrl.obtainCookies(loginRequestUrlModel);
     }
 
 
-
+    @Override
     public String getPageContent(String url, HttpUrlResultModel httpUrlResultModel) throws IOException {
         HttpURLConnection conn;
         URL obj = new URL(url);
@@ -37,7 +43,7 @@ public class HttpRequestDataSourceImpl implements HttpRequestDataSource {
         conn.setRequestProperty("Accept",
                 "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
         conn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-        conn.setRequestProperty("Connection", "keep-alive");
+        //conn.setRequestProperty("Connection", "keep-alive");
         conn.setRequestProperty("Accept-Encoding", "gzip-deflate");
         if (httpUrlResultModel.getCookies() != null) {
             for (String cookie : httpUrlResultModel.getCookies()) {
@@ -57,8 +63,6 @@ public class HttpRequestDataSourceImpl implements HttpRequestDataSource {
             response.append(inputLine);
         }
         in.close();
-
         return response.toString();
-
     }
 }

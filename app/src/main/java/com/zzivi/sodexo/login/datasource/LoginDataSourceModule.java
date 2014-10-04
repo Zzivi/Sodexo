@@ -26,5 +26,6 @@ public class LoginDataSourceModule {
     public LoginMapper provideLoginMapper() { return new LoginMapper(); }
 
     @Provides
+    @Singleton
     public LoginHttpUrl provideLoginHttpUrl(LoginHttpUrlConnection loginHttpUrlConnection) { return loginHttpUrlConnection; }
 }

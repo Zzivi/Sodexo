@@ -4,13 +4,10 @@ import com.path.android.jobqueue.JobManager;
 import com.path.android.jobqueue.Params;
 import com.zzivi.sodexo.base.domain.interactor.MainThread;
 import com.zzivi.sodexo.base.domain.interactor.imp.UserCaseJob;
-import com.zzivi.sodexo.cardsbalance.datasource.CardsBalanceDataSource;
+import com.zzivi.sodexo.cardsbalance.datasource.httpurl.CardsBalanceDataSource;
 import com.zzivi.sodexo.cardsbalance.datasource.model.CardBalanceResultModel;
 import com.zzivi.sodexo.cardsbalance.domain.callback.CardsBalanceCallback;
 import com.zzivi.sodexo.cardsbalance.domain.usercase.CardsBalance;
-import com.zzivi.sodexo.login.datasource.LoginDataSource;
-import com.zzivi.sodexo.login.domain.callback.LoginCallback;
-import com.zzivi.sodexo.login.domain.model.LoginCredentials;
 
 import java.util.List;
 

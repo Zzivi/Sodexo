@@ -1,6 +1,7 @@
 package com.zzivi.sodexo.cardsbalance.datasource;
 
-import com.zzivi.sodexo.cardsbalance.datasource.imp.CardsBalanceDataSourceFromUrl;
+import com.zzivi.sodexo.cardsbalance.datasource.httpurl.CardsBalanceDataSource;
+import com.zzivi.sodexo.cardsbalance.datasource.httpurl.imp.CardsBalanceDataSourceFromUrl;
 
 import javax.inject.Singleton;
 

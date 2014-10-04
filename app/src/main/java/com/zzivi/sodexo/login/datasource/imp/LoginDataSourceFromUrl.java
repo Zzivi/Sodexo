@@ -4,6 +4,7 @@ import com.zzivi.sodexo.base.datasource.httpurl.sharedpreferences.imp.LoginCooki
 import com.zzivi.sodexo.login.datasource.LoginDataSource;
 import com.zzivi.sodexo.login.datasource.httpurl.LoginHttpUrl;
 import com.zzivi.sodexo.login.datasource.httpurl.model.HttpUrlResultModel;
+import com.zzivi.sodexo.login.datasource.httpurl.model.LoginRequestUrlModel;
 import com.zzivi.sodexo.login.domain.mapper.LoginMapper;
 import com.zzivi.sodexo.login.domain.model.LoginCredentials;
 
@@ -29,7 +30,8 @@ public class LoginDataSourceFromUrl implements LoginDataSource {
 
     public boolean getCookies(LoginCredentials loginCredentials) throws IOException {
 
-        HttpUrlResultModel httpUrlResultModel = loginHttpUrl.obtainCookies(loginMapper.transform(loginCredentials));
+        LoginRequestUrlModel loginRequestUrlModel = loginMapper.transform(loginCredentials);
+        HttpUrlResultModel httpUrlResultModel = loginHttpUrl.obtainCookies(loginRequestUrlModel);
         //store cookies
         this.storeCookies.storeLoginCookie(httpUrlResultModel);
         return true;

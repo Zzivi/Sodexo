@@ -58,7 +58,7 @@ public class LoginFragment extends BaseFragment implements LoginController.View{
 
     @Override
     public void loginSuccess() {
-       // ((BaseActivity) getActivity()).getNavigation().redirectToOrigin(this.getActivity());
+        controller.openCardsBalance(getActivity());
     }
 
     @SuppressWarnings("unused")  // ButterKnife injected
@@ -67,7 +67,6 @@ public class LoginFragment extends BaseFragment implements LoginController.View{
         if(username.getText().length()!=0) {
             if (password.getText().length() != 0) {
                 controller.login(username.getText().toString(), password.getText().toString());
-                controller.openCardsBalance(getActivity());
             }
         }
     }
