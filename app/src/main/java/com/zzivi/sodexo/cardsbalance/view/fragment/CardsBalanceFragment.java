@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.zzivi.sodexo.R;
 import com.zzivi.sodexo.base.view.fragment.BaseFragment;
-import com.zzivi.sodexo.cardsbalance.datasource.model.CardBalanceResultModel;
+import com.zzivi.sodexo.cardsbalance.domain.model.CardBalanceResultModel;
 import com.zzivi.sodexo.cardsbalance.view.controller.CardsBalanceController;
 
 import java.util.List;
@@ -22,6 +22,8 @@ import butterknife.InjectView;
  */
 public class CardsBalanceFragment extends BaseFragment implements CardsBalanceController.View{
 
+    @InjectView(R.id.tv_card)
+    TextView card;
     @InjectView(R.id.tv_cardbalance)
     TextView cardbalance;
 
@@ -49,7 +51,8 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
     @Override
     public void showComplete() {
         List<CardBalanceResultModel> cardsBalances = controller.getListCardsBalance();
-        cardbalance.setText(cardsBalances.get(0).getCardName());
+        cardbalance.setText(cardsBalances.get(0).getCardBalance());
+        card.setText(cardsBalances.get(0).getCardName());
     }
 
 }

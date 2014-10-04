@@ -1,4 +1,4 @@
-package com.zzivi.sodexo.cardsbalance.datasource.model;
+package com.zzivi.sodexo.cardsbalance.domain.model;
 
 /**
  * Created by daniel on 28/09/14.

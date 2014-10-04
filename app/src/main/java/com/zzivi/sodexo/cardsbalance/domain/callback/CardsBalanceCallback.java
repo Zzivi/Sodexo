@@ -1,7 +1,6 @@
 package com.zzivi.sodexo.cardsbalance.domain.callback;
 
-import com.zzivi.sodexo.cardsbalance.datasource.model.CardBalanceResultModel;
-import com.zzivi.sodexo.cardsbalance.domain.usercase.CardsBalance;
+import com.zzivi.sodexo.cardsbalance.domain.model.CardBalanceResultModel;
 
 import java.util.List;
 
