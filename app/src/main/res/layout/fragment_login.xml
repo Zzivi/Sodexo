@@ -1,54 +1,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-	android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".LoginActivity$PlaceholderFragment">
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:visibility="visible"
-		android:id="@+id/textView3"/>
+        android:visibility="visible" />
 
-	<EditText
+    <EditText
         android:id="@+id/et_login_user"
-		android:padding="@dimen/gap_medium"
-		android:layout_marginLeft="@dimen/gap_medium"
-		android:layout_marginTop="@dimen/gap_medium"
-		android:layout_marginRight="@dimen/gap_medium"
-		android:hint="@string/login_hint"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:singleLine="true"
-		android:clickable="false"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/gap_medium"
+        android:layout_marginRight="@dimen/gap_medium"
+        android:layout_marginTop="@dimen/gap_medium"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:hint="@string/login_hint"
+        android:padding="@dimen/gap_medium"
+        android:singleLine="true" />
 
-	<EditText
+    <EditText
         android:id="@+id/et_login_password"
-		android:padding="@dimen/gap_medium"
-		android:layout_marginLeft="@dimen/gap_medium"
-		android:layout_marginTop="@dimen/gap_medium"
-		android:layout_marginRight="@dimen/gap_medium"
-		android:hint="@string/password_hint"
-		android:inputType="textPassword"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:singleLine="true"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/gap_medium"
+        android:layout_marginRight="@dimen/gap_medium"
+        android:layout_marginTop="@dimen/gap_medium"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        android:padding="@dimen/gap_medium"
+        android:singleLine="true" />
 
-	<Button
+    <Button
         android:id="@+id/bt_login"
-		android:padding="@dimen/gap_medium"
-		android:layout_marginLeft="@dimen/gap_medium"
-		android:layout_marginTop="@dimen/gap_medium"
-		android:layout_marginRight="@dimen/gap_medium"
-		android:text="Login"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:textColor="@android:color/white"
-		/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/gap_medium"
+        android:layout_marginRight="@dimen/gap_medium"
+        android:layout_marginTop="@dimen/gap_medium"
+        android:padding="@dimen/gap_medium"
+        android:text="Login"
+        android:textColor="@android:color/white" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true" />
 
 </LinearLayout>

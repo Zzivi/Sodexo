@@ -2,8 +2,10 @@
 <resources>
 
     <string name="app_name">Sodexo</string>
-	<string name="login_hint">username</string>
-	<string name="password_hint">password</string>
+	<string name="login_hint">usuario</string>
+	<string name="password_hint">contraseña</string>
+    <string name="login_warning_hint">Informa tu usuario</string>
+    <string name="password_warning_hint">Informa tu contraseña</string>
     <string name="zerocase_cardbalance_list">No tienes tarjetas registradas</string>
 
 </resources>

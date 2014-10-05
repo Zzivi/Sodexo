@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.zzivi.sodexo.R;
 import com.zzivi.sodexo.base.view.fragment.BaseFragment;
@@ -29,6 +31,8 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
     ListView cards;
     @InjectView(R.id.zerocase)
     View zeroFound;
+    @InjectView(R.id.progressBar)
+    ProgressBar progressBar;
 
     @Inject
     CardsBalanceController controller;
@@ -50,13 +54,15 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         controller.setView(this);
+        progressBar.setIndeterminate(true);
+        progressBar.setVisibility(View.VISIBLE);
         controller.showCardsBalance();
     }
 
     @Override
     public void showComplete() {
         List<CardBalanceItem> cardsBalances = cardBalanceMapper.transform(controller.getListCardsBalance());
-
+        progressBar.setVisibility(View.GONE);
         if (cardsBalances.isEmpty()) {
             zeroFound.setVisibility(View.VISIBLE);
             zeroFound.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
