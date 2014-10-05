@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.view.animation.AnimationUtils;
+import android.widget.ListView;
 
 import com.zzivi.sodexo.R;
 import com.zzivi.sodexo.base.view.fragment.BaseFragment;
-import com.zzivi.sodexo.cardsbalance.domain.model.CardBalanceResultModel;
+import com.zzivi.sodexo.cardsbalance.view.adapter.CardBalanceListAdapter;
 import com.zzivi.sodexo.cardsbalance.view.controller.CardsBalanceController;
+import com.zzivi.sodexo.cardsbalance.view.mapper.CardBalanceItemMapper;
+import com.zzivi.sodexo.cardsbalance.view.model.CardBalanceItem;
 
 import java.util.List;
 
@@ -22,13 +25,15 @@ import butterknife.InjectView;
  */
 public class CardsBalanceFragment extends BaseFragment implements CardsBalanceController.View{
 
-    @InjectView(R.id.tv_card)
-    TextView card;
-    @InjectView(R.id.tv_cardbalance)
-    TextView cardbalance;
+    @InjectView(R.id.cardsList)
+    ListView cards;
+    @InjectView(R.id.zerocase)
+    View zeroFound;
 
     @Inject
     CardsBalanceController controller;
+    @Inject
+    CardBalanceItemMapper cardBalanceMapper;
 
     private View rootView;
 
@@ -37,7 +42,7 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_cardsbalance, container, false);
+        rootView = inflater.inflate(R.layout.fragment_cardsbalancelist, container, false);
         return rootView;
     }
 
@@ -50,9 +55,15 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
 
     @Override
     public void showComplete() {
-        List<CardBalanceResultModel> cardsBalances = controller.getListCardsBalance();
-        cardbalance.setText(cardsBalances.get(0).getCardBalance());
-        card.setText(cardsBalances.get(0).getCardName());
-    }
+        List<CardBalanceItem> cardsBalances = cardBalanceMapper.transform(controller.getListCardsBalance());
 
+        if (cardsBalances.isEmpty()) {
+            zeroFound.setVisibility(View.VISIBLE);
+            zeroFound.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
+        } else {
+            cards.setAdapter(new CardBalanceListAdapter(getActivity(), cardsBalances));
+            zeroFound.setVisibility(View.GONE);
+        }
+
+    }
 }

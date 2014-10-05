@@ -4,5 +4,6 @@
     <string name="app_name">Sodexo</string>
 	<string name="login_hint">username</string>
 	<string name="password_hint">password</string>
+    <string name="zerocase_cardbalance_list">No tienes tarjetas registradas</string>
 
 </resources>

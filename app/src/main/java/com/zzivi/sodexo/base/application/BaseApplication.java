@@ -7,7 +7,7 @@ import com.zzivi.sodexo.base.domain.GlobalDomainModule;
 import com.zzivi.sodexo.base.utils.module.AndroidModule;
 import com.zzivi.sodexo.cardsbalance.datasource.CardsBalanceDataSourceModule;
 import com.zzivi.sodexo.cardsbalance.domain.CardsBalanceDomainModule;
-import com.zzivi.sodexo.cardsbalance.view.model.CardsBalanceViewModule;
+import com.zzivi.sodexo.cardsbalance.view.CardsBalanceViewModule;
 import com.zzivi.sodexo.login.datasource.LoginDataSourceModule;
 import com.zzivi.sodexo.login.domain.LoginDomainModule;
 import com.zzivi.sodexo.login.view.model.LoginViewModule;
