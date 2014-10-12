@@ -26,7 +26,7 @@ public class LoginCookieDataSourceSharedPreferences implements LoginCookieDataSo
     public void storeLoginCookie(CookiesResultModel cookiesResultModel) {
         SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
-        String  cookie =  cookiesResultModel.getCookie();
+        String cookie = cookiesResultModel.getCookie();
         if (cookie != null) {
              editor.putString("cookie", cookie);
         }

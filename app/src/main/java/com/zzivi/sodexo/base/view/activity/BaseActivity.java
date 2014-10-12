@@ -1,9 +1,7 @@
 package com.zzivi.sodexo.base.view.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-;
 
 import com.zzivi.sodexo.base.application.BaseApplication;
 

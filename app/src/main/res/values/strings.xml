@@ -8,4 +8,6 @@
     <string name="password_warning_hint">Informa tu contraseña</string>
     <string name="zerocase_cardbalance_list">No tienes tarjetas registradas</string>
 
+    <!-- API Error descriptions -->
+    <string name="ApiUnauthorizedException">El e-mail o la contraseña son incorrectos</string>
 </resources>

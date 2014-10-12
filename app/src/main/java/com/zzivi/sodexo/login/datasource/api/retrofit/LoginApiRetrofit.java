@@ -2,6 +2,7 @@ package com.zzivi.sodexo.login.datasource.api.retrofit;
 
 import com.zzivi.sodexo.base.datasource.api.retrofit.ApiRetrofit;
 import com.zzivi.sodexo.base.datasource.api.retrofit.RestApi;
+import com.zzivi.sodexo.base.datasource.api.retrofit.exceptions.ApiUnauthorizedException;
 import com.zzivi.sodexo.login.datasource.api.LoginApi;
 import com.zzivi.sodexo.login.datasource.api.model.CookiesResultModel;
 import com.zzivi.sodexo.login.datasource.api.model.LoginRequestApiModel;
@@ -29,9 +30,15 @@ public class LoginApiRetrofit implements LoginApi {
     public CookiesResultModel obtainCookies(LoginRequestApiModel credentials) {
         CookiesResultModel cookiesResultModel = new CookiesResultModel();
 
-        RestApi restApi = apiRetrofit.buildRestApi();
+        RestApi restApi = apiRetrofit.buildRestApiLogin();
+
         Response response =  restApi.login(credentials.getUsername(), credentials.getPassword(),
                 credentials.getPwdaux(), credentials.getMantenerSesion());
+
+        // throw login error depending on the location
+        if (!"http://www.mysodexo.es/editar-mi-perfil".equals(response.getUrl())) {
+           throw new ApiUnauthorizedException();
+        }
 
         List<Header> headers = response.getHeaders();
         for(Header header : headers) {
