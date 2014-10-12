@@ -1,28 +1,37 @@
 package com.zzivi.sodexo.cardsbalance.domain.mapper;
 
-import android.provider.DocumentsContract.Document;
-
 import com.zzivi.sodexo.cardsbalance.domain.model.CardBalanceResultModel;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import retrofit.client.Response;
+import retrofit.mime.MimeUtil;
+import retrofit.mime.TypedByteArray;
+import retrofit.mime.TypedInput;
 
 /**
  * Created by daniel on 4/10/14.
  */
 public class CardBalanceMapper {
 
-    public List<CardBalanceResultModel> transform(String pageContent) throws IOException {
+    public List<CardBalanceResultModel> transform(Response pageContent) throws IOException {
+
+        //transform api retrofit response to html string
+        TypedInput body = pageContent.getBody();
+        String bodyMime = body.mimeType();
+        byte[] bodyBytes = ((TypedByteArray) pageContent.getBody()).getBytes();
+        String bodyCharset = MimeUtil.parseCharset(bodyMime);
+        String html = new String(bodyBytes, bodyCharset);
+
+        //parse html to obtain cards balances
         List<CardBalanceResultModel> cardsBalance = new CopyOnWriteArrayList<CardBalanceResultModel>();
-        org.jsoup.nodes.Document doc = Jsoup.parse(pageContent);
+        org.jsoup.nodes.Document doc = Jsoup.parse(html);
         Elements trs = doc.getElementsByTag("tr");
         for(Element tr : trs){
             CardBalanceResultModel cardBalanceResult = new CardBalanceResultModel();

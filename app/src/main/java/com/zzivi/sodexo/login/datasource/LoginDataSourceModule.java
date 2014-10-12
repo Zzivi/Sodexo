@@ -1,8 +1,8 @@
 package com.zzivi.sodexo.login.datasource;
 
-import com.zzivi.sodexo.login.datasource.httpurl.LoginHttpUrl;
-import com.zzivi.sodexo.login.datasource.httpurl.imp.LoginHttpUrlConnection;
-import com.zzivi.sodexo.login.datasource.imp.LoginDataSourceFromUrl;
+import com.zzivi.sodexo.login.datasource.api.LoginApi;
+import com.zzivi.sodexo.login.datasource.api.retrofit.LoginApiRetrofit;
+import com.zzivi.sodexo.login.datasource.imp.LoginDataSourceFromApiAndSharedPreferences;
 import com.zzivi.sodexo.login.domain.mapper.LoginMapper;
 
 import javax.inject.Singleton;
@@ -18,7 +18,7 @@ public class LoginDataSourceModule {
 
     @Provides
     @Singleton
-    public LoginDataSource provideLoginDataSource(LoginDataSourceFromUrl loginDataSource) {
+    public LoginDataSource provideLoginDataSource(LoginDataSourceFromApiAndSharedPreferences loginDataSource) {
         return loginDataSource;
     }
 
@@ -26,6 +26,7 @@ public class LoginDataSourceModule {
     public LoginMapper provideLoginMapper() { return new LoginMapper(); }
 
     @Provides
-    @Singleton
-    public LoginHttpUrl provideLoginHttpUrl(LoginHttpUrlConnection loginHttpUrlConnection) { return loginHttpUrlConnection; }
+    public LoginApi provideLoginApi(LoginApiRetrofit loginApiRetrofit) {
+        return loginApiRetrofit;
+    }
 }

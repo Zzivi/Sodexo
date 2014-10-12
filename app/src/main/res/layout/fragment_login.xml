@@ -24,6 +24,7 @@
         android:layout_marginTop="@dimen/gap_medium"
         android:background="@android:color/white"
         android:clickable="true"
+        android:textColor="@android:color/darker_gray"
         android:hint="@string/login_hint"
         android:padding="@dimen/gap_medium"
         android:singleLine="true" />
@@ -35,6 +36,7 @@
         android:layout_marginLeft="@dimen/gap_medium"
         android:layout_marginRight="@dimen/gap_medium"
         android:layout_marginTop="@dimen/gap_medium"
+        android:textColor="@android:color/darker_gray"
         android:background="@android:color/white"
         android:clickable="true"
         android:hint="@string/password_hint"

@@ -1,4 +1,4 @@
-package com.zzivi.sodexo.login.view.model;
+package com.zzivi.sodexo.login.view;
 
 import com.zzivi.sodexo.login.domain.usercase.Login;
 import com.zzivi.sodexo.login.view.activity.phone.LoginActivity;
