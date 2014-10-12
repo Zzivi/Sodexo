@@ -54,4 +54,21 @@ public class ApiRetrofit {
         //restAdapterBuilder.setLogLevel(RestAdapter.LogLevel.FULL);
         return restAdapter.create(RestApi.class);
     }
+
+    public RestApi buildRestApiLogin() {
+
+        RetrofitHttpClient retrofitHttpClient = new RetrofitHttpClient();
+        retrofitHttpClient.removeCookies();
+
+        RestAdapter.Builder restAdapterBuilder =
+                new RestAdapter.Builder()
+                        .setEndpoint(API_URL)
+                        .setClient(retrofitHttpClient)
+                        .setRequestInterceptor(addHeaders);
+
+
+        RestAdapter restAdapter = restAdapterBuilder.build();
+        //restAdapterBuilder.setLogLevel(RestAdapter.LogLevel.FULL);
+        return restAdapter.create(RestApi.class);
+    }
 }

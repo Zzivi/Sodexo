@@ -26,8 +26,8 @@ public class LoginController {
             view.loginSuccess();
         }
         @Override
-        public void onError(){
-            view.loginError();
+        public void onError(int message){
+            view.loginError(message);
         }
     };
 
@@ -50,6 +50,6 @@ public class LoginController {
 
     public interface View {
         void loginSuccess();
-        void loginError();
+        void loginError(int message);
     }
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.zzivi.sodexo.R;
 import com.zzivi.sodexo.base.view.fragment.BaseFragment;
@@ -65,7 +66,11 @@ public class LoginFragment extends BaseFragment implements LoginController.View{
     }
 
     @Override
-    public void loginError() {
+    public void loginError(int message) {
+        progressBar.setVisibility(View.GONE);
+        buttonLogin.setEnabled(true);
+        Toast toast = Toast.makeText(this.getActivity(), getString(message), Toast.LENGTH_LONG);
+        toast.show();
     }
 
     @Override

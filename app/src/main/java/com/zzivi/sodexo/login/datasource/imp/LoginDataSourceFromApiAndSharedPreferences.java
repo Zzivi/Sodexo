@@ -32,7 +32,6 @@ public class LoginDataSourceFromApiAndSharedPreferences implements LoginDataSour
 
         LoginRequestApiModel loginRequestApiModel = loginMapper.transform(loginCredentials);
         CookiesResultModel cookiesResultModel = loginApi.obtainCookies(loginRequestApiModel);
-        //HttpUrlResultModel httpUrlResultModel = loginHttpUrl.obtainCookies(loginRequestUrlModel);
         //store cookies
         this.storeCookies.storeLoginCookie(cookiesResultModel);
         return true;

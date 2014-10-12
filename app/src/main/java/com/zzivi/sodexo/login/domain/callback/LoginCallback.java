@@ -5,5 +5,5 @@ package com.zzivi.sodexo.login.domain.callback;
  */
 public interface LoginCallback {
     void loginComplete();
-    void onError();
+    void onError(int message);
 }
