@@ -1,9 +1,8 @@
 package com.zzivi.sodexo.base.datasource;
 
-import com.zzivi.sodexo.base.datasource.httpurl.request.HttpRequestDataSource;
-import com.zzivi.sodexo.base.datasource.httpurl.request.imp.HttpRequestDataSourceImpl;
-import com.zzivi.sodexo.base.datasource.httpurl.sharedpreferences.LoginCookieDataSource;
-import com.zzivi.sodexo.base.datasource.httpurl.sharedpreferences.imp.LoginCookieDataSourceSharedPreferences;
+import com.zzivi.sodexo.base.datasource.api.retrofit.ApiRetrofit;
+import com.zzivi.sodexo.base.datasource.sharedpreferences.LoginCookieDataSource;
+import com.zzivi.sodexo.base.datasource.sharedpreferences.imp.LoginCookieDataSourceSharedPreferences;
 
 import javax.inject.Singleton;
 
@@ -25,7 +24,7 @@ public class GlobalDataSourceModule {
 
     @Provides
     @Singleton
-    public HttpRequestDataSource provideHttpRequestDataSource(HttpRequestDataSourceImpl httpRequest) {
-        return httpRequest;
+    public ApiRetrofit provideApiRetrofit(LoginCookieDataSourceSharedPreferences loginCookie) {
+        return new ApiRetrofit(loginCookie);
     }
 }

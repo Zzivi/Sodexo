@@ -4,7 +4,7 @@ import com.path.android.jobqueue.JobManager;
 import com.path.android.jobqueue.Params;
 import com.zzivi.sodexo.base.domain.interactor.MainThread;
 import com.zzivi.sodexo.base.domain.interactor.imp.UserCaseJob;
-import com.zzivi.sodexo.cardsbalance.datasource.httpurl.CardsBalanceDataSource;
+import com.zzivi.sodexo.cardsbalance.datasource.api.CardsBalanceApi;
 import com.zzivi.sodexo.cardsbalance.domain.mapper.CardBalanceMapper;
 import com.zzivi.sodexo.cardsbalance.domain.model.CardBalanceResultModel;
 import com.zzivi.sodexo.cardsbalance.domain.callback.CardsBalanceCallback;
@@ -18,16 +18,17 @@ import javax.inject.Inject;
  * Created by daniel on 28/09/14.
  */
 public class CardsBalanceJob extends UserCaseJob implements CardsBalance{
-    private CardsBalanceDataSource cardsBalanceDataSource;
+
+    private CardsBalanceApi cardsBalanceApi;
     private CardsBalanceCallback callback;
     private CardBalanceMapper cardBalanceMapper;
 
     @Inject
     protected CardsBalanceJob(JobManager jobManager, MainThread mainThread,
-                           CardsBalanceDataSource cardsBalanceDataSource,
+                              CardsBalanceApi cardsBalanceApi,
                            CardBalanceMapper cardBalanceMapper) {
         super(jobManager, mainThread, new Params(UserCaseJob.DEFAULT_PRIORITY));
-        this.cardsBalanceDataSource = cardsBalanceDataSource;
+        this.cardsBalanceApi = cardsBalanceApi;
         this.cardBalanceMapper = cardBalanceMapper;
     }
 
@@ -39,7 +40,7 @@ public class CardsBalanceJob extends UserCaseJob implements CardsBalance{
         });
     }
     @Override public void doRun() throws Throwable {
-        List<CardBalanceResultModel> cardsBalance = cardBalanceMapper.transform(cardsBalanceDataSource.getCardBalances());
+        List<CardBalanceResultModel> cardsBalance = cardBalanceMapper.transform(cardsBalanceApi.getCardBalances());
         notifyCardsLoaded(cardsBalance);
     }
 

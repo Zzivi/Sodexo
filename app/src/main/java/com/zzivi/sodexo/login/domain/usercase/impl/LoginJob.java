@@ -19,8 +19,6 @@ public class LoginJob extends UserCaseJob implements Login {
     private LoginCallback callback;
     private LoginDataSource loginDataSource;
 
-    private static final String LOGTAG = "LoginJob";
-
     @Inject
     protected LoginJob(JobManager jobManager, MainThread mainThread, LoginDataSource loginDataSource) {
         super(jobManager, mainThread, new Params(UserCaseJob.DEFAULT_PRIORITY));
@@ -36,13 +34,9 @@ public class LoginJob extends UserCaseJob implements Login {
 
     @Override
     public void doRun() throws Throwable {
-        //try {
-        System.out.println("Login en domain!!!");
-            loginDataSource.getCookies(loginCredentials);
-            notifyLoginComplete(true);
-        //}catch (ApiGeneralErrorException e){
-        //   domainErrorHandler.notifyError(new GeneralErrorEvent(e.getMessage()));
-        //}
+        loginDataSource.getCookies(loginCredentials);
+        notifyLoginComplete(true);
+
     }
 
     private void notifyLoginComplete(final boolean loginOk) {

@@ -1,10 +1,7 @@
 package com.zzivi.sodexo.login.view.fragment;
 
-import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,7 +101,7 @@ public class LoginFragment extends BaseFragment implements LoginController.View{
 
     @OnClick(R.id.et_login_password)
     public void resetErrorPassword(){
-        password.setHint(R.string.login_hint);
+        password.setHint(R.string.password_hint);
         password.setHintTextColor(Color.GRAY);
     }
 }

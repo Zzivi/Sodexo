@@ -10,7 +10,7 @@ import com.zzivi.sodexo.cardsbalance.domain.CardsBalanceDomainModule;
 import com.zzivi.sodexo.cardsbalance.view.CardsBalanceViewModule;
 import com.zzivi.sodexo.login.datasource.LoginDataSourceModule;
 import com.zzivi.sodexo.login.domain.LoginDomainModule;
-import com.zzivi.sodexo.login.view.model.LoginViewModule;
+import com.zzivi.sodexo.login.view.LoginViewModule;
 
 import java.util.Arrays;
 import java.util.List;

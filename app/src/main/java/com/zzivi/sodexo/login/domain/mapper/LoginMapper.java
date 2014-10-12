@@ -1,6 +1,6 @@
 package com.zzivi.sodexo.login.domain.mapper;
 
-import com.zzivi.sodexo.login.datasource.httpurl.model.LoginRequestUrlModel;
+import com.zzivi.sodexo.login.datasource.api.model.LoginRequestApiModel;
 import com.zzivi.sodexo.login.domain.model.LoginCredentials;
 
 /**
@@ -8,10 +8,12 @@ import com.zzivi.sodexo.login.domain.model.LoginCredentials;
  */
 public class LoginMapper {
 
-    public LoginRequestUrlModel transform (LoginCredentials domainModel ){
-        LoginRequestUrlModel apiModel = new LoginRequestUrlModel();
+    public LoginRequestApiModel transform (LoginCredentials domainModel ){
+        LoginRequestApiModel apiModel = new LoginRequestApiModel();
         apiModel.setUsername(domainModel.getUsername());
         apiModel.setPassword(domainModel.getPassword());
+        apiModel.setMantenerSesion("1");
+        apiModel.setPwdaux("Contraseña");
         return apiModel;
     }
 }
