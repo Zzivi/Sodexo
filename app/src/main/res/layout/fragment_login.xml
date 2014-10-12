@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/white"
     tools:context=".LoginActivity$PlaceholderFragment">
 
     <TextView
@@ -26,7 +28,7 @@
         android:clickable="true"
         android:textColor="@android:color/darker_gray"
         android:hint="@string/login_hint"
-        android:padding="@dimen/gap_medium"
+        android:padding="@dimen/gap_mhigh"
         android:singleLine="true" />
 
     <EditText
@@ -41,7 +43,7 @@
         android:clickable="true"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        android:padding="@dimen/gap_medium"
+        android:padding="@dimen/gap_mhigh"
         android:singleLine="true" />
 
     <Button
@@ -51,7 +53,8 @@
         android:layout_marginLeft="@dimen/gap_medium"
         android:layout_marginRight="@dimen/gap_medium"
         android:layout_marginTop="@dimen/gap_medium"
-        android:padding="@dimen/gap_medium"
+        android:padding="@dimen/gap_mhigh"
+        android:textAllCaps="true"
         android:text="Login"
         android:textColor="@android:color/white" />
 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="CustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MainActionBar</item>
+        <item name="actionBarStyle">@style/MainActionBar</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+
+    <style name="MainActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/dark_gray</item>
+        <item name="background">@color/dark_gray</item>
+        <item name="android:height">@dimen/actionbar_height</item>
+        <item name="android:actionBarSize">@dimen/actionbar_height</item>
+        <item name="actionBarSize">@dimen/actionbar_height</item>
+        <item name="android:titleTextStyle">@style/MainThemeActionBarTitleTextStyle</item>
+        <item name="titleTextStyle">@style/MainThemeActionBarTitleTextStyle</item>
+    </style>
+
+    <style name="MainThemeActionBarTitleTextStyle" parent="TextAppearance.AppCompat.Widget.Base.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">@dimen/gap_small</item>
+    </style>
+
+</resources>

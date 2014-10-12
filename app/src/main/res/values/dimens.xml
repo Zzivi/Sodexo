@@ -10,4 +10,6 @@
     <dimen name="gap_mxhigh">26dp</dimen>
 	<dimen name="gap_xhigh">32dp</dimen>
 	<dimen name="gap_xxhigh">64dp</dimen>
+
+    <dimen name="actionbar_height">56dp</dimen>
 </resources>
