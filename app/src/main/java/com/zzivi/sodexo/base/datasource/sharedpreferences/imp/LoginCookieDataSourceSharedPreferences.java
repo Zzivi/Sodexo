@@ -41,4 +41,14 @@ public class LoginCookieDataSourceSharedPreferences implements LoginCookieDataSo
         cookiesResultModel.setCookie(settings.getString("cookie", "not found"));
         return cookiesResultModel;
     }
+
+    @Override
+    public boolean isLoggedIn() {
+        boolean isLoggedIn = false;
+        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, context.MODE_PRIVATE);
+        if (!"not found".equals(settings.getString("cookie", "not found"))) {
+            isLoggedIn = true;
+        }
+        return isLoggedIn;
+    }
 }

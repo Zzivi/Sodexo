@@ -5,6 +5,7 @@ import android.app.Application;
 import com.zzivi.sodexo.base.datasource.GlobalDataSourceModule;
 import com.zzivi.sodexo.base.domain.GlobalDomainModule;
 import com.zzivi.sodexo.base.utils.module.AndroidModule;
+import com.zzivi.sodexo.base.view.GlobalViewModule;
 import com.zzivi.sodexo.cardsbalance.datasource.CardsBalanceDataSourceModule;
 import com.zzivi.sodexo.cardsbalance.domain.CardsBalanceDomainModule;
 import com.zzivi.sodexo.cardsbalance.view.CardsBalanceViewModule;
@@ -31,7 +32,7 @@ public class BaseApplication extends Application {
     }
 
     protected List<Object> getModules() {
-        return Arrays.asList(new AndroidModule(this), new GlobalDomainModule(), new GlobalDataSourceModule(),
+        return Arrays.asList(new AndroidModule(this), new GlobalDomainModule(), new GlobalDataSourceModule(), new GlobalViewModule(),
                 new LoginViewModule(), new LoginDomainModule(), new LoginDataSourceModule(),
                 new CardsBalanceViewModule(), new CardsBalanceDomainModule(), new CardsBalanceDataSourceModule());
     }

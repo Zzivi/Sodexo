@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
 import com.zzivi.sodexo.base.application.BaseApplication;
+import com.zzivi.sodexo.base.view.Navigation;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
@@ -12,11 +15,15 @@ import butterknife.ButterKnife;
  */
 public class BaseActivity extends ActionBarActivity {
 
+    @Inject
+    protected Navigation navigation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         inject(this);
         ButterKnife.inject(this);
+        navigation.checkLogin(this);
     }
 
     public void inject(Object object) {

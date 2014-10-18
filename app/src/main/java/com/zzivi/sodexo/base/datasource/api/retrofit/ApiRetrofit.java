@@ -26,7 +26,7 @@ public class ApiRetrofit {
     RequestInterceptor addHeaders = new RequestInterceptor() {
         @Override
         public void intercept(RequestInterceptor.RequestFacade request) {
-            request.addHeader("Accept-Encoding", "gzip-deflate");
+            //request.addHeader("Accept-Encoding", "gzip-deflate");
             request.addHeader("Content-Type", "application/x-www-form-urlencoded");
             request.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
             request.addHeader("Accept-Language", "en-US,en;q=0.5");
@@ -47,6 +47,7 @@ public class ApiRetrofit {
                 new RestAdapter.Builder()
                         .setEndpoint(API_URL)
                         .setClient(new RetrofitHttpClient())
+                        .setLogLevel(RestAdapter.LogLevel.FULL)
                         .setRequestInterceptor(addHeaders);
 
 
@@ -64,6 +65,7 @@ public class ApiRetrofit {
                 new RestAdapter.Builder()
                         .setEndpoint(API_URL)
                         .setClient(retrofitHttpClient)
+                        .setLogLevel(RestAdapter.LogLevel.FULL)
                         .setRequestInterceptor(addHeaders);
 
 
