@@ -24,7 +24,7 @@ public class LoginCookieDataSourceSharedPreferences implements LoginCookieDataSo
 
     @Override
     public void storeLoginCookie(CookiesResultModel cookiesResultModel) {
-        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         String cookie = cookiesResultModel.getCookie();
         if (cookie != null) {
@@ -35,7 +35,7 @@ public class LoginCookieDataSourceSharedPreferences implements LoginCookieDataSo
 
     @Override
     public CookiesResultModel obtainLoginCookie() {
-        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, context.MODE_PRIVATE);
+        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, Context.MODE_PRIVATE);
 
         CookiesResultModel cookiesResultModel = new CookiesResultModel();
         cookiesResultModel.setCookie(settings.getString("cookie", "not found"));
@@ -44,11 +44,15 @@ public class LoginCookieDataSourceSharedPreferences implements LoginCookieDataSo
 
     @Override
     public boolean isLoggedIn() {
-        boolean isLoggedIn = false;
-        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, context.MODE_PRIVATE);
-        if (!"not found".equals(settings.getString("cookie", "not found"))) {
-            isLoggedIn = true;
-        }
-        return isLoggedIn;
+        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, Context.MODE_PRIVATE);
+        return settings.getBoolean("isLoggedIn", false);
+    }
+
+    @Override
+    public void setLoggedIn(boolean isLoggedIn) {
+        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("isLoggedIn", isLoggedIn);
+        editor.commit();
     }
 }

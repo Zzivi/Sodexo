@@ -11,4 +11,6 @@ public interface LoginCookieDataSource {
     public CookiesResultModel obtainLoginCookie();
 
     public boolean isLoggedIn();
+
+    public void setLoggedIn(boolean isLogged);
 }

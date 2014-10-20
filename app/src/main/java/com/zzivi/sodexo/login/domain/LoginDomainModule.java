@@ -1,6 +1,8 @@
 package com.zzivi.sodexo.login.domain;
 
+import com.zzivi.sodexo.login.domain.usercase.Home;
 import com.zzivi.sodexo.login.domain.usercase.Login;
+import com.zzivi.sodexo.login.domain.usercase.impl.HomeJob;
 import com.zzivi.sodexo.login.domain.usercase.impl.LoginJob;
 
 import dagger.Module;
@@ -17,5 +19,9 @@ public class LoginDomainModule {
         return loginJob;
     }
 
+    @Provides
+    public Home provideHome(HomeJob homeJob) {
+        return homeJob;
+    }
 }
 
