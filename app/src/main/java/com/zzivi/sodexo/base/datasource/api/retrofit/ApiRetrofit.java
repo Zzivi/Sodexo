@@ -16,6 +16,7 @@ import retrofit.RestAdapter;
 public class ApiRetrofit {
 
     public static final String API_URL = "http://www.mysodexo.es";
+
     private LoginCookieDataSource loginCookieDataSource;
 
     @Inject
@@ -26,7 +27,6 @@ public class ApiRetrofit {
     RequestInterceptor addHeaders = new RequestInterceptor() {
         @Override
         public void intercept(RequestInterceptor.RequestFacade request) {
-            //request.addHeader("Accept-Encoding", "gzip-deflate");
             request.addHeader("Content-Type", "application/x-www-form-urlencoded");
             request.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
             request.addHeader("Accept-Language", "en-US,en;q=0.5");
@@ -37,7 +37,6 @@ public class ApiRetrofit {
             if (!"not found".equals(cookiesResultModel.getCookie())) {
                 request.addHeader("Cookie", cookiesResultModel.getCookie());
             }
-
         }
     };
 
@@ -47,30 +46,10 @@ public class ApiRetrofit {
                 new RestAdapter.Builder()
                         .setEndpoint(API_URL)
                         .setClient(new RetrofitHttpClient())
-                        .setLogLevel(RestAdapter.LogLevel.FULL)
+                        //.setLogLevel(RestAdapter.LogLevel.FULL)
                         .setRequestInterceptor(addHeaders);
 
-
         RestAdapter restAdapter = restAdapterBuilder.build();
-        //restAdapterBuilder.setLogLevel(RestAdapter.LogLevel.FULL);
-        return restAdapter.create(RestApi.class);
-    }
-
-    public RestApi buildRestApiLogin() {
-
-        RetrofitHttpClient retrofitHttpClient = new RetrofitHttpClient();
-        retrofitHttpClient.removeCookies();
-
-        RestAdapter.Builder restAdapterBuilder =
-                new RestAdapter.Builder()
-                        .setEndpoint(API_URL)
-                        .setClient(retrofitHttpClient)
-                        .setLogLevel(RestAdapter.LogLevel.FULL)
-                        .setRequestInterceptor(addHeaders);
-
-
-        RestAdapter restAdapter = restAdapterBuilder.build();
-        //restAdapterBuilder.setLogLevel(RestAdapter.LogLevel.FULL);
         return restAdapter.create(RestApi.class);
     }
 }
