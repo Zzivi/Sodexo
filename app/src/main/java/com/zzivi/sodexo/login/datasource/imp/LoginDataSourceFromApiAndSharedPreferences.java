@@ -30,10 +30,16 @@ public class LoginDataSourceFromApiAndSharedPreferences implements LoginDataSour
 
     public boolean getCookies(LoginCredentials loginCredentials) throws IOException {
 
-        LoginRequestApiModel loginRequestApiModel = loginMapper.transform(loginCredentials);
-        CookiesResultModel cookiesResultModel = loginApi.obtainCookies(loginRequestApiModel);
+        //get cookies
+        CookiesResultModel cookiesResultModel = loginApi.obtainCookies();
+
         //store cookies
         this.storeCookies.storeLoginCookie(cookiesResultModel);
+
+        //do login
+        LoginRequestApiModel loginRequestApiModel = loginMapper.transform(loginCredentials);
+        loginApi.doLogin(loginRequestApiModel);
+
         return true;
     }
 

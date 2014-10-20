@@ -19,4 +19,7 @@ public interface RestApi {
     @GET("/includes/modulo-saldos-tarjeta.php")
     public Response getCardsBalance();
 
+    @GET("/")
+    public Response getHome();
+
 }
