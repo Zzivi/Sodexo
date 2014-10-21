@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.zzivi.sodexo.cardsbalance.view.activity.phone.CardsBalanceActivity;
+import com.zzivi.sodexo.login.domain.callback.HomeCallback;
 import com.zzivi.sodexo.login.domain.callback.LoginCallback;
 import com.zzivi.sodexo.login.domain.model.LoginCredentials;
+import com.zzivi.sodexo.login.domain.usercase.Home;
 import com.zzivi.sodexo.login.domain.usercase.Login;
 
 /**
@@ -13,11 +15,13 @@ import com.zzivi.sodexo.login.domain.usercase.Login;
  */
 public class LoginController {
     private Login login;
+    private Home home;
     private View view;
     private static final String LOGTAG = "LoginController";
 
-    public LoginController(Login login) {
+    public LoginController(Login login, Home home) {
         this.login = login;
+        this.home = home;
     }
 
     private LoginCallback loginCompleteCallback = new LoginCallback() {
@@ -30,6 +34,17 @@ public class LoginController {
             view.loginError(message);
         }
     };
+
+    private HomeCallback homeCompleteCallback = new HomeCallback() {
+        @Override
+        public void complete() {
+            view.homeSuccess();
+        }
+    };
+
+    public void home(){
+        home.home(homeCompleteCallback);
+    }
 
     public void login (String username, String password){
         LoginCredentials credentials = new LoginCredentials();
@@ -50,6 +65,7 @@ public class LoginController {
 
     public interface View {
         void loginSuccess();
+        void homeSuccess();
         void loginError(int message);
     }
 }

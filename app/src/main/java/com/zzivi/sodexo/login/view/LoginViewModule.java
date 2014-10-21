@@ -3,7 +3,6 @@ package com.zzivi.sodexo.login.view;
 import com.zzivi.sodexo.login.domain.usercase.Home;
 import com.zzivi.sodexo.login.domain.usercase.Login;
 import com.zzivi.sodexo.login.view.activity.phone.LoginActivity;
-import com.zzivi.sodexo.login.view.controller.HomeController;
 import com.zzivi.sodexo.login.view.controller.LoginController;
 import com.zzivi.sodexo.login.view.fragment.LoginFragment;
 
@@ -18,12 +17,7 @@ import dagger.Provides;
 public class LoginViewModule {
 
     @Provides
-    public LoginController provideLoginController(Login login){
-        return new LoginController(login);
-    }
-
-    @Provides
-    public HomeController provideHomeController(Home home){
-        return new HomeController(home);
+    public LoginController provideLoginController(Login login, Home home){
+        return new LoginController(login, home);
     }
 }

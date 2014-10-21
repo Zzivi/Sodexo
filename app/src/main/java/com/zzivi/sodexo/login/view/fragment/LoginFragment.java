@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.zzivi.sodexo.R;
 import com.zzivi.sodexo.base.view.fragment.BaseFragment;
-import com.zzivi.sodexo.login.view.controller.HomeController;
 import com.zzivi.sodexo.login.view.controller.LoginController;
 
 import javax.inject.Inject;
@@ -23,13 +22,10 @@ import butterknife.OnClick;
 /**
  * Created by romina.liuzzi on 22/08/14.
  */
-public class LoginFragment extends BaseFragment implements LoginController.View, HomeController.View{
+public class LoginFragment extends BaseFragment implements LoginController.View {
 
     @Inject
     LoginController loginController;
-
-    @Inject
-    HomeController homeController;
 
     @InjectView(R.id.et_login_user)
     EditText username;
@@ -60,14 +56,13 @@ public class LoginFragment extends BaseFragment implements LoginController.View,
         super.onResume();
         buttonLogin.setEnabled(false);
         progressBar.setVisibility(View.VISIBLE);
-        homeController.home();
+        loginController.home();
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loginController.setView(this);
-        homeController.setView(this);
     }
 
     @Override
