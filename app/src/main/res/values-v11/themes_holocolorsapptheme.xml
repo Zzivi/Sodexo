@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="HoloColorsAppTheme" parent="@style/_HoloColorsAppTheme"/>
+
+  <style name="_HoloColorsAppTheme" parent="Theme.AppCompat.Light">
+
+    <item name="android:editTextBackground">@drawable/holocolorsapptheme_edit_text_holo_light</item>
+
+    <item name="android:textColorHighlight">#99ff0000</item>
+    <item name="android:textSelectHandleLeft">@drawable/holocolorsapptheme_text_select_handle_left</item>
+    <item name="android:textSelectHandleRight">@drawable/holocolorsapptheme_text_select_handle_right</item>
+    <item name="android:textSelectHandle">@drawable/holocolorsapptheme_text_select_handle_middle</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewHoloColorsAppTheme</item>
+
+    <item name="android:listChoiceIndicatorMultiple">@drawable/holocolorsapptheme_btn_check_holo_light</item>
+
+    <item name="android:listChoiceIndicatorSingle">@drawable/holocolorsapptheme_btn_radio_holo_light</item>
+
+    <item name="android:buttonStyle">@style/ButtonHoloColorsAppTheme</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonHoloColorsAppTheme</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/SpinnerHoloColorsAppTheme</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarHoloColorsAppTheme</item>
+
+    <item name="android:seekBarStyle">@style/SeekBarHoloColorsAppTheme</item>
+
+    <item name="android:buttonStyleToggle">@style/ToggleHoloColorsAppTheme</item>
+
+    <item name="android:listChoiceBackgroundIndicator">@drawable/holocolorsapptheme_list_selector_holo_light</item>
+
+    <item name="android:activatedBackgroundIndicator">@drawable/holocolorsapptheme_activated_background_holo_light</item>
+
+    <item name="android:fastScrollThumbDrawable">@drawable/holocolorsapptheme_fastscroll_thumb_holo</item>
+
+  </style>
+
+</resources>
