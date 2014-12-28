@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import com.zzivi.sodexo.base.daggerutils.ForApplication;
 import com.zzivi.sodexo.base.datasource.sharedpreferences.LoginCookieDataSource;
 import com.zzivi.sodexo.login.datasource.api.model.CookiesResultModel;
+import com.zzivi.sodexo.login.datasource.api.model.LoginRequestApiModel;
+import com.zzivi.sodexo.login.domain.model.LoginCredentials;
 
 import javax.inject.Inject;
 
@@ -40,6 +42,24 @@ public class LoginCookieDataSourceSharedPreferences implements LoginCookieDataSo
         CookiesResultModel cookiesResultModel = new CookiesResultModel();
         cookiesResultModel.setCookie(settings.getString("cookie", "not found"));
         return cookiesResultModel;
+    }
+
+    @Override
+    public void storeCredentials(LoginCredentials loginCredentials) {
+        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("username", loginCredentials.getUsername());
+        editor.putString("password", loginCredentials.getPassword());
+        editor.commit();
+    }
+
+    @Override
+    public LoginCredentials obtainCredentials() {
+        LoginCredentials loginCredentials = new LoginCredentials();
+        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, Context.MODE_PRIVATE);
+        loginCredentials.setUsername(settings.getString("username", "not found"));
+        loginCredentials.setPassword(settings.getString("password", "not found"));
+        return loginCredentials;
     }
 
     @Override
