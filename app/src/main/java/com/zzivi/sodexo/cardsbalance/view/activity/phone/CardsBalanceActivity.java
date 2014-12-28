@@ -1,6 +1,5 @@
 package com.zzivi.sodexo.cardsbalance.view.activity.phone;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -8,10 +7,8 @@ import android.view.MenuItem;
 
 import com.zzivi.sodexo.R;
 import com.zzivi.sodexo.base.view.activity.BaseActivity;
-import com.zzivi.sodexo.cardsbalance.view.controller.CardsBalanceController;
 import com.zzivi.sodexo.cardsbalance.view.fragment.CardsBalanceFragment;
 
-import javax.inject.Inject;
 
 /**
  * Created by daniel on 28/09/14.
@@ -46,9 +43,6 @@ public class CardsBalanceActivity extends BaseActivity {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.action_refresh:
-                //Intent intent = new Intent(this, CardsBalanceActivity.class);
-                //this.startActivity(intent);
-                //this.finish();
                 cardsBalanceFragment.showCardsBalance();
                 return true;
 

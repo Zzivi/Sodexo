@@ -2,11 +2,7 @@ package com.zzivi.sodexo.base.view.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
-import com.zzivi.sodexo.R;
 import com.zzivi.sodexo.base.application.BaseApplication;
 import com.zzivi.sodexo.base.view.Navigation;
 
@@ -39,8 +35,4 @@ public class BaseActivity extends ActionBarActivity {
     public Navigation getNavigation (){
         return navigation;
     }
-
-
-
-
 }
