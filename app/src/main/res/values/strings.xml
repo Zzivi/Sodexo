@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Sodexo</string>
+    <string name="refresh">Refrescar</string>
 	<string name="login_hint">usuario</string>
     <string name="acceder">Acceder</string>
 	<string name="password_hint">contraseña</string>

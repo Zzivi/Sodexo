@@ -59,6 +59,10 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         controller.setView(this);
+        showCardsBalance();
+    }
+
+    public void showCardsBalance(){
         progressBar.setIndeterminate(true);
         progressBar.setVisibility(View.VISIBLE);
         controller.showCardsBalance();
@@ -67,7 +71,7 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
     @Override
     public void showComplete() {
         List<CardBalanceItem> cardsBalances = cardBalanceMapper.transform(controller.getListCardsBalance());
-        progressBar.setVisibility(View.GONE);
+        progressBar.setVisibility(View.INVISIBLE);
         if (cardsBalances.isEmpty()) {
             zeroFound.setVisibility(View.VISIBLE);
             zeroFound.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));

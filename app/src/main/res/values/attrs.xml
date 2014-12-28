@@ -8,6 +8,8 @@
 
         <enum name="no_icon" value="-1" />
         <enum name="icon_card" value="0" />
+        <enum name="icon_loop" value="1" />
+        <enum name="icon_card2" value="2" />
     </attr>
 
     <declare-styleable name="CustomFontTextView">
