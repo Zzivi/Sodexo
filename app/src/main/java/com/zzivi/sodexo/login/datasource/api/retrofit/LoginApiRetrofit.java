@@ -27,24 +27,6 @@ public class LoginApiRetrofit implements LoginApi {
     }
 
     @Override
-    public CookiesResultModel obtainCookies() {
-        CookiesResultModel cookiesResultModel = new CookiesResultModel();
-
-        RestApi restApi = apiRetrofit.buildRestApi();
-
-        Response responseHome = restApi.getHome();
-
-        List<Header> headers = responseHome.getHeaders();
-        for(Header header : headers) {
-            if ("Set-Cookie".equals(header.getName())) {
-                cookiesResultModel.setCookie(header.getValue());
-            }
-        }
-
-        return cookiesResultModel;
-    }
-
-    @Override
     public boolean doLogin(LoginRequestApiModel credentials) {
         RestApi restApi = apiRetrofit.buildRestApi();
 

@@ -30,9 +30,9 @@ public class ApiRetrofit {
             request.addHeader("Content-Type", "application/x-www-form-urlencoded");
             request.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
             request.addHeader("Accept-Language", "en-US,en;q=0.5");
-            request.addHeader("User-Agent", "Mozilla/5.0");
             request.addHeader("Referer", "http://www.mysodexo.es/");
             request.addHeader("Host", "www.mysodexo.es");
+            request.addHeader("Connection", "keep-alive");
             CookiesResultModel cookiesResultModel = loginCookieDataSource.obtainLoginCookie();
             if (!"not found".equals(cookiesResultModel.getCookie())) {
                 request.addHeader("Cookie", cookiesResultModel.getCookie());
