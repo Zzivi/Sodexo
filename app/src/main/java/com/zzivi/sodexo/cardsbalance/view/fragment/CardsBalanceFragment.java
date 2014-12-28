@@ -1,5 +1,7 @@
 package com.zzivi.sodexo.cardsbalance.view.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +12,14 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.zzivi.sodexo.R;
+import com.zzivi.sodexo.base.view.activity.BaseActivity;
 import com.zzivi.sodexo.base.view.fragment.BaseFragment;
+import com.zzivi.sodexo.cardsbalance.view.activity.phone.CardsBalanceActivity;
 import com.zzivi.sodexo.cardsbalance.view.adapter.CardBalanceListAdapter;
 import com.zzivi.sodexo.cardsbalance.view.controller.CardsBalanceController;
 import com.zzivi.sodexo.cardsbalance.view.mapper.CardBalanceItemMapper;
 import com.zzivi.sodexo.cardsbalance.view.model.CardBalanceItem;
+import com.zzivi.sodexo.login.view.activity.phone.LoginActivity;
 
 import java.util.List;
 
@@ -66,10 +71,18 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
         if (cardsBalances.isEmpty()) {
             zeroFound.setVisibility(View.VISIBLE);
             zeroFound.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
+            redirectToLogin(getActivity());
+            getActivity().finish();
         } else {
             cards.setAdapter(new CardBalanceListAdapter(getActivity(), cardsBalances));
             zeroFound.setVisibility(View.GONE);
         }
 
+    }
+
+    public void redirectToLogin(Activity context) {
+        ((BaseActivity) context).getNavigation().cleanCredentials();
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
     }
 }

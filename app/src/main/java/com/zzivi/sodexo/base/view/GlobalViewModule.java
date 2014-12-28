@@ -1,6 +1,6 @@
 package com.zzivi.sodexo.base.view;
 
-import com.zzivi.sodexo.base.datasource.sharedpreferences.imp.LoginCookieDataSourceSharedPreferences;
+import com.zzivi.sodexo.base.datasource.sharedpreferences.imp.SessionDataSourceSharedPreferences;
 import com.zzivi.sodexo.base.view.activity.BaseActivity;
 
 import javax.inject.Singleton;
@@ -17,7 +17,7 @@ public class GlobalViewModule {
 
     @Provides
     @Singleton
-    Navigation provideNavigation(LoginCookieDataSourceSharedPreferences loginCookieDataSourceSharedPreferences){
+    Navigation provideNavigation(SessionDataSourceSharedPreferences loginCookieDataSourceSharedPreferences){
         return new Navigation(loginCookieDataSourceSharedPreferences);
     }
 }

@@ -1,9 +1,8 @@
 package com.zzivi.sodexo.login.datasource.imp;
 
-import com.zzivi.sodexo.base.datasource.sharedpreferences.imp.LoginCookieDataSourceSharedPreferences;
+import com.zzivi.sodexo.base.datasource.sharedpreferences.imp.SessionDataSourceSharedPreferences;
 import com.zzivi.sodexo.login.datasource.LoginDataSource;
 import com.zzivi.sodexo.login.datasource.api.LoginApi;
-import com.zzivi.sodexo.login.datasource.api.model.CookiesResultModel;
 import com.zzivi.sodexo.login.datasource.api.model.LoginRequestApiModel;
 import com.zzivi.sodexo.login.domain.mapper.LoginMapper;
 import com.zzivi.sodexo.login.domain.model.LoginCredentials;
@@ -18,11 +17,11 @@ import javax.inject.Inject;
 public class LoginDataSourceFromApiAndSharedPreferences implements LoginDataSource {
     public final LoginMapper loginMapper;
     public final LoginApi loginApi;
-    public final LoginCookieDataSourceSharedPreferences storeCookies;
+    public final SessionDataSourceSharedPreferences storeCookies;
 
     @Inject
     public LoginDataSourceFromApiAndSharedPreferences(LoginMapper loginMapper, LoginApi loginApi,
-                                                      LoginCookieDataSourceSharedPreferences storeCookies) {
+                                                      SessionDataSourceSharedPreferences storeCookies) {
         this.loginMapper = loginMapper;
         this.loginApi = loginApi;
         this.storeCookies = storeCookies;

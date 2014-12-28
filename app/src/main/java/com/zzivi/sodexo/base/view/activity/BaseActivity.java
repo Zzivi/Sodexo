@@ -31,4 +31,8 @@ public class BaseActivity extends ActionBarActivity {
         // for use.
         ((BaseApplication) getApplication()).inject(object);
     }
+
+    public Navigation getNavigation (){
+        return navigation;
+    }
 }

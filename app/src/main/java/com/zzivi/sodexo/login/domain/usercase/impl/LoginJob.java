@@ -3,6 +3,7 @@ package com.zzivi.sodexo.login.domain.usercase.impl;
 import com.path.android.jobqueue.JobManager;
 import com.path.android.jobqueue.Params;
 import com.zzivi.sodexo.base.datasource.api.retrofit.exceptions.ApiUnauthorizedException;
+import com.zzivi.sodexo.base.datasource.sharedpreferences.SessionDataSource;
 import com.zzivi.sodexo.base.domain.interactor.MainThread;
 import com.zzivi.sodexo.base.domain.interactor.imp.UserCaseJob;
 import com.zzivi.sodexo.login.datasource.LoginDataSource;
@@ -19,11 +20,13 @@ public class LoginJob extends UserCaseJob implements Login {
     private LoginCredentials loginCredentials ;
     private LoginCallback callback;
     private LoginDataSource loginDataSource;
+    private SessionDataSource sessionDataSource;
 
     @Inject
-    protected LoginJob(JobManager jobManager, MainThread mainThread, LoginDataSource loginDataSource) {
+    protected LoginJob(JobManager jobManager, MainThread mainThread, LoginDataSource loginDataSource, SessionDataSource sessionDataSource) {
         super(jobManager, mainThread, new Params(UserCaseJob.DEFAULT_PRIORITY));
         this.loginDataSource = loginDataSource;
+        this.sessionDataSource = sessionDataSource;
     }
 
     @Override
@@ -36,6 +39,7 @@ public class LoginJob extends UserCaseJob implements Login {
     @Override
     public void doRun() throws Throwable {
         try {
+            sessionDataSource.storeCredentials(loginCredentials);
             loginDataSource.getCookies(loginCredentials);
             notifyLoginComplete(true, 0);
         } catch (ApiUnauthorizedException ex) {

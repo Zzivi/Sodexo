@@ -11,7 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.zzivi.sodexo.R;
+import com.zzivi.sodexo.base.view.Navigation;
+import com.zzivi.sodexo.base.view.activity.BaseActivity;
 import com.zzivi.sodexo.base.view.fragment.BaseFragment;
+import com.zzivi.sodexo.login.domain.model.LoginCredentials;
 import com.zzivi.sodexo.login.view.controller.LoginController;
 
 import javax.inject.Inject;
@@ -63,6 +66,14 @@ public class LoginFragment extends BaseFragment implements LoginController.View 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loginController.setView(this);
+        fillCredentials();
+    }
+
+    public void fillCredentials(){
+        Navigation navigation = ((BaseActivity) getActivity()).getNavigation();
+        LoginCredentials credentials = navigation.getCredentials();
+        username.setText(credentials.getUsername());
+        password.setText(credentials.getPassword());
     }
 
     @Override

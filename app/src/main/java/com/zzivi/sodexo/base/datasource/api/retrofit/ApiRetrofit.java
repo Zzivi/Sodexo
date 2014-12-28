@@ -1,7 +1,7 @@
 package com.zzivi.sodexo.base.datasource.api.retrofit;
 
 import com.zzivi.sodexo.base.datasource.api.retrofit.client.RetrofitHttpClient;
-import com.zzivi.sodexo.base.datasource.sharedpreferences.LoginCookieDataSource;
+import com.zzivi.sodexo.base.datasource.sharedpreferences.SessionDataSource;
 import com.zzivi.sodexo.login.datasource.api.model.CookiesResultModel;
 
 import javax.inject.Inject;
@@ -17,10 +17,10 @@ public class ApiRetrofit {
 
     public static final String API_URL = "http://www.mysodexo.es";
 
-    private LoginCookieDataSource loginCookieDataSource;
+    private SessionDataSource loginCookieDataSource;
 
     @Inject
-    public ApiRetrofit(LoginCookieDataSource loginCookieDataSource){
+    public ApiRetrofit(SessionDataSource loginCookieDataSource){
         this.loginCookieDataSource = loginCookieDataSource;
     }
 

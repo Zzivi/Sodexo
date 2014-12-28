@@ -3,9 +3,10 @@ package com.zzivi.sodexo.base.view;
 import android.content.Intent;
 import android.util.Log;
 
-import com.zzivi.sodexo.base.datasource.sharedpreferences.LoginCookieDataSource;
+import com.zzivi.sodexo.base.datasource.sharedpreferences.SessionDataSource;
 import com.zzivi.sodexo.base.view.activity.BaseActivity;
 import com.zzivi.sodexo.cardsbalance.view.activity.phone.CardsBalanceActivity;
+import com.zzivi.sodexo.login.domain.model.LoginCredentials;
 import com.zzivi.sodexo.login.view.activity.phone.LoginActivity;
 
 /**
@@ -13,14 +14,14 @@ import com.zzivi.sodexo.login.view.activity.phone.LoginActivity;
  */
 public class Navigation {
     public static final String LOGTAG = "BaseActivity";
-    public final LoginCookieDataSource loginCookieDataSource;
+    public final SessionDataSource loginCookieDataSource;
 
-    public Navigation(LoginCookieDataSource loginCookieDataSource) {
+    public Navigation(SessionDataSource loginCookieDataSource) {
         this.loginCookieDataSource = loginCookieDataSource;
 
     }
     /**
-     * Check login method will check user login status
+     * Check login method will check user login statusLoginCookieDataSource
      * If false it will redirect user to login page
      * Else won't do anything
      *
@@ -34,6 +35,15 @@ public class Navigation {
             originActivity.startActivity(intent);
             originActivity.finish();
         }
+    }
+
+    public void cleanCredentials(){
+        loginCookieDataSource.setLoggedIn(false);
+        loginCookieDataSource.deleteLoginCookie();
+    }
+
+    public LoginCredentials getCredentials(){
+        return loginCookieDataSource.obtainCredentials();
     }
 
     /**
