@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="AutoCompleteTextViewHoloColorsAppTheme" parent="android:Widget.Holo.Light.AutoCompleteTextView">
+      <item name="android:dropDownSelector">@drawable/holocolorsapptheme_list_selector_holo_light</item>
+	    <item name="android:background">@drawable/holocolorsapptheme_edit_text_holo_light</item>
+  </style>
+
+  <style name="ButtonHoloColorsAppTheme" parent="android:Widget.Holo.Light.Button">
+	  <item name="android:background">@drawable/holocolorsapptheme_btn_default_holo_light</item>
+      <item name="android:minHeight">48dip</item>
+      <item name="android:minWidth">64dip</item>
+      <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="ImageButtonHoloColorsAppTheme" parent="android:Widget.Holo.Light.ImageButton">
+	  <item name="android:background">@drawable/holocolorsapptheme_btn_default_holo_light</item>
+  </style>
+
+  <style name="SpinnerHoloColorsAppTheme" parent="android:Widget.Holo.Light.Spinner">
+      <item name="android:background">@drawable/holocolorsapptheme_spinner_background_holo_light</item>
+      <item name="android:dropDownSelector">@drawable/holocolorsapptheme_list_selector_holo_light</item>
+  </style>
+
+  <style name="ProgressBarHoloColorsAppTheme" parent="android:Widget.Holo.Light.ProgressBar.Horizontal">
+      <item name="android:progressDrawable">@drawable/holocolorsapptheme_progress_horizontal_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/holocolorsapptheme_progress_indeterminate_horizontal_holo_light</item>
+  </style>
+
+  <style name="SeekBarHoloColorsAppTheme" parent="android:Widget.Holo.Light.SeekBar">
+      <item name="android:progressDrawable">@drawable/holocolorsapptheme_scrubber_progress_horizontal_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/holocolorsapptheme_scrubber_progress_horizontal_holo_light</item>
+      <item name="android:thumb">@drawable/holocolorsapptheme_scrubber_control_selector_holo_light</item>
+  </style>
+
+  <style name="ToggleHoloColorsAppTheme" parent="android:Widget.Holo.Light.Button.Toggle">
+      <item name="android:background">@drawable/holocolorsapptheme_btn_toggle_holo_light</item>
+  </style>
+
+</resources>

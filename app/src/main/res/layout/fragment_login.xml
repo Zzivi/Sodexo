@@ -24,11 +24,10 @@
         android:layout_marginLeft="@dimen/gap_medium"
         android:layout_marginRight="@dimen/gap_medium"
         android:layout_marginTop="@dimen/gap_medium"
-        android:background="@android:color/white"
         android:clickable="true"
-        android:textColor="@android:color/darker_gray"
         android:hint="@string/login_hint"
         android:padding="@dimen/gap_mhigh"
+        style="@style/AutoCompleteTextViewHoloColorsAppTheme"
         android:singleLine="true" />
 
     <EditText
@@ -38,11 +37,10 @@
         android:layout_marginLeft="@dimen/gap_medium"
         android:layout_marginRight="@dimen/gap_medium"
         android:layout_marginTop="@dimen/gap_medium"
-        android:textColor="@android:color/darker_gray"
-        android:background="@android:color/white"
         android:clickable="true"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
+        style="@style/AutoCompleteTextViewHoloColorsAppTheme"
         android:padding="@dimen/gap_mhigh"
         android:singleLine="true" />
 
@@ -54,12 +52,13 @@
         android:layout_marginRight="@dimen/gap_medium"
         android:layout_marginTop="@dimen/gap_medium"
         android:padding="@dimen/gap_mhigh"
+        style="@style/ButtonHoloColorsAppTheme"
         android:textAllCaps="true"
-        android:text="Login"
-        android:textColor="@android:color/white" />
+        android:text="@string/acceder" />
 
     <ProgressBar
         android:id="@+id/progressBar"
+        style="@style/ProgressBarHoloColorsAppTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="true" />

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IconView">
+        <attr name="icons"/>
+    </declare-styleable>
+
+    <attr name="icons" format="string">
+
+        <enum name="no_icon" value="-1" />
+        <enum name="icon_card" value="0" />
+    </attr>
+
+    <declare-styleable name="CustomFontTextView">
+        <attr name="font"/>
+    </declare-styleable>
+
+    <attr name="font" format="string">
+        <enum name="regular" value="0" />
+        <enum name="medium" value="1" />
+        <enum name="bold" value="2" />
+        <enum name="italic" value="3" />
+    </attr>
+
+    <declare-styleable name="IconTextView">
+        <attr name="icons"/>
+        <attr name="icontextview_text" format="string"/>
+        <attr name="icontextview_iconColor" format="color"/>
+        <attr name="icontextview_iconSize" format="dimension"/>
+        <attr name="icontextview_textColor" format="color"/>
+        <attr name="icontextview_textSize" format="dimension"/>
+        <attr name="icontextview_iconPadding" format="dimension"/>
+        <attr name="font"/>
+    </declare-styleable>
+</resources>

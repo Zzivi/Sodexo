@@ -10,6 +10,8 @@
     <dimen name="gap_mxhigh">26dp</dimen>
 	<dimen name="gap_xhigh">32dp</dimen>
 	<dimen name="gap_xxhigh">64dp</dimen>
+    <dimen name="font_size_normal">14sp</dimen>
 
     <dimen name="actionbar_height">56dp</dimen>
+    <dimen name="tab_host_default_height">48dp</dimen>
 </resources>
