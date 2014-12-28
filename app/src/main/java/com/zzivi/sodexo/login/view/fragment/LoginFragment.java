@@ -2,6 +2,7 @@ package com.zzivi.sodexo.login.view.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,6 +82,7 @@ public class LoginFragment extends BaseFragment implements LoginController.View 
         progressBar.setVisibility(View.GONE);
         buttonLogin.setEnabled(true);
         Toast toast = Toast.makeText(this.getActivity(), getString(message), Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
         toast.show();
     }
 
