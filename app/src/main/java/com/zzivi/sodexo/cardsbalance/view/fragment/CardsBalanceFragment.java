@@ -71,8 +71,8 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
         List<CardBalanceItem> cardsBalances = cardBalanceMapper.transform(controller.getListCardsBalance());
         progressBar.setVisibility(View.INVISIBLE);
         if (cardsBalances.isEmpty()) {
-            zeroFound.setVisibility(View.VISIBLE);
-            zeroFound.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
+            //zeroFound.setVisibility(View.VISIBLE);
+            //zeroFound.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
             redirectToLogin(getActivity());
             getActivity().finish();
         } else {
