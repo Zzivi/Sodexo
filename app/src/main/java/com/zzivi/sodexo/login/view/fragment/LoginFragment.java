@@ -59,7 +59,6 @@ public class LoginFragment extends BaseFragment implements LoginController.View 
     public void onResume(){
         super.onResume();
         buttonLogin.setEnabled(false);
-        progressBar.setVisibility(View.VISIBLE);
         loginController.home();
     }
 
