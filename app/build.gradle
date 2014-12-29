@@ -11,10 +11,20 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("../release-key.keystore")
+            storePassword System.getenv("SODEXO_KSTOREPWD")
+            keyAlias System.getenv("SODEXO_KSTOREALIAS")
+            keyPassword System.getenv("SODEXO_KSTOREPWD")
+        }
+    }
     buildTypes {
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
