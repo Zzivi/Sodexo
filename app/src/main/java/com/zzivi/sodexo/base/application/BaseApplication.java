@@ -2,6 +2,7 @@ package com.zzivi.sodexo.base.application;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
 import com.zzivi.sodexo.base.datasource.GlobalDataSourceModule;
 import com.zzivi.sodexo.base.domain.GlobalDomainModule;
 import com.zzivi.sodexo.base.utils.module.AndroidModule;
@@ -13,6 +14,7 @@ import com.zzivi.sodexo.login.datasource.LoginDataSourceModule;
 import com.zzivi.sodexo.login.domain.LoginDomainModule;
 import com.zzivi.sodexo.login.view.LoginViewModule;
 
+import io.fabric.sdk.android.Fabric;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         graph = ObjectGraph.create(getModules().toArray());
         graph.injectStatics();
     }

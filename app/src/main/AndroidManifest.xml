@@ -19,6 +19,9 @@
         <activity
             android:name=".cardsbalance.view.activity.phone.CardsBalanceActivity"
             android:configChanges="orientation|screenSize"></activity>
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="1e45351bf4087ca9ef32a1da07384fcc7dc22e02" />
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
