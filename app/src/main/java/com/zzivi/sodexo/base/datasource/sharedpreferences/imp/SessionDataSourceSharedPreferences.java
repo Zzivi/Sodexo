@@ -2,11 +2,16 @@ package com.zzivi.sodexo.base.datasource.sharedpreferences.imp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.zzivi.sodexo.base.daggerutils.ForApplication;
 import com.zzivi.sodexo.base.datasource.sharedpreferences.SessionDataSource;
+import com.zzivi.sodexo.base.crypto.AesCbcWithIntegrity;
 import com.zzivi.sodexo.login.datasource.api.model.CookiesResultModel;
 import com.zzivi.sodexo.login.domain.model.LoginCredentials;
+
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
 
 import javax.inject.Inject;
 
@@ -15,6 +20,7 @@ import javax.inject.Inject;
  */
 public class SessionDataSourceSharedPreferences implements SessionDataSource {
     private static final String AUTHORIZE_FILE = "AUTHORIZE";
+    private static final String PASSWORD = "PulpiRatit08";
 
     public final Context context;
 
@@ -54,19 +60,61 @@ public class SessionDataSourceSharedPreferences implements SessionDataSource {
 
     @Override
     public void storeCredentials(LoginCredentials loginCredentials) {
+        String salt = "";
+        AesCbcWithIntegrity.CipherTextIvMac userEncrypted = null;
+        AesCbcWithIntegrity.CipherTextIvMac passEncrypted = null;
+        try {
+            //encrypt password: more info in https://github.com/tozny/java-aes-crypto
+            salt = AesCbcWithIntegrity.saltString(AesCbcWithIntegrity.generateSalt());
+            AesCbcWithIntegrity.SecretKeys key = AesCbcWithIntegrity.generateKeyFromPassword(PASSWORD, salt);
+            userEncrypted = AesCbcWithIntegrity.encrypt(loginCredentials.getUsername(), key);
+            passEncrypted = AesCbcWithIntegrity.encrypt(loginCredentials.getPassword(), key);
+        } catch (GeneralSecurityException e) {
+            Log.e("Zzivi", "GeneralSecurityException", e);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("Zzivi", "UnsupportedEncodingException", e);
+        }
+
+        //store in sharedPreferences
         SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString("username", loginCredentials.getUsername());
-        editor.putString("password", loginCredentials.getPassword());
+        editor.putString("salt", salt);
+        editor.putString("username", userEncrypted.toString());
+        editor.putString("password", passEncrypted.toString());
         editor.commit();
     }
 
     @Override
-    public LoginCredentials obtainCredentials() {
+    public LoginCredentials obtainCredentials()  {
+
         LoginCredentials loginCredentials = new LoginCredentials();
         SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, Context.MODE_PRIVATE);
-        loginCredentials.setUsername(settings.getString("username", ""));
-        loginCredentials.setPassword(settings.getString("password", ""));
+        String userEncrypted = settings.getString("username", "");
+        String passEncrypted = settings.getString("password", "");
+
+        //decrypt password: more info in https://github.com/tozny/java-aes-crypto
+        String userDecrypted = "";
+        String passDecrypted = "";
+        try {
+            if (!"".equals(userEncrypted) && !"".equals(passEncrypted)) {
+                String salt = settings.getString("salt", "");
+                if (!"".equals(salt)) {
+                    AesCbcWithIntegrity.SecretKeys key = AesCbcWithIntegrity.generateKeyFromPassword(PASSWORD, salt);
+                    AesCbcWithIntegrity.CipherTextIvMac civUserEncrypted = new AesCbcWithIntegrity.CipherTextIvMac(userEncrypted);
+                    AesCbcWithIntegrity.CipherTextIvMac civPassEncrypted = new AesCbcWithIntegrity.CipherTextIvMac(passEncrypted);
+                    userDecrypted = AesCbcWithIntegrity.decryptString(civUserEncrypted, key);
+                    passDecrypted = AesCbcWithIntegrity.decryptString(civPassEncrypted, key);
+                }
+            }
+        } catch (GeneralSecurityException e) {
+            Log.e("Zzivi", "GeneralSecurityException", e);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("Zzivi", "UnsupportedEncodingException", e);
+        }
+
+        loginCredentials.setUsername(userDecrypted);
+        loginCredentials.setPassword(passDecrypted);
+
         return loginCredentials;
     }
 
