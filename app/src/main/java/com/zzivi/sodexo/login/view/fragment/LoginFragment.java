@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -43,6 +44,9 @@ public class LoginFragment extends BaseFragment implements LoginController.View 
     @InjectView(R.id.progressBar)
     ProgressBar progressBar;
 
+    @InjectView(R.id.checkbox_recordar)
+    CheckBox recordar;
+
     private View rootView;
 
 	public LoginFragment() {
@@ -72,8 +76,11 @@ public class LoginFragment extends BaseFragment implements LoginController.View 
     public void fillCredentials(){
         Navigation navigation = ((BaseActivity) getActivity()).getNavigation();
         LoginCredentials credentials = navigation.getCredentials();
-        username.setText(credentials.getUsername());
-        password.setText(credentials.getPassword());
+        if (credentials.isStoreCredentials()) {
+            username.setText(credentials.getUsername());
+            password.setText(credentials.getPassword());
+            recordar.setChecked(true);
+        }
     }
 
     @Override
@@ -104,7 +111,8 @@ public class LoginFragment extends BaseFragment implements LoginController.View 
                 buttonLogin.setEnabled(false);
                 //progressBar.setIndeterminate(true);
                 progressBar.setVisibility(View.VISIBLE);
-                loginController.login(username.getText().toString(), password.getText().toString());
+                loginController.login(username.getText().toString(),
+                    password.getText().toString(), recordar.isChecked());
             } else {
                 // Show Error
                 password.setHint(R.string.password_warning_hint);

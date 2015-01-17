@@ -87,6 +87,7 @@ public class SessionDataSourceSharedPreferences implements SessionDataSource {
         editor.putString("salt", salt);
         editor.putString("username", userEncrypted.toString());
         editor.putString("password", passEncrypted.toString());
+        editor.putBoolean("storecredentials", loginCredentials.isStoreCredentials());
         editor.commit();
     }
 
@@ -97,6 +98,7 @@ public class SessionDataSourceSharedPreferences implements SessionDataSource {
         SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, Context.MODE_PRIVATE);
         String userEncrypted = settings.getString("username", "");
         String passEncrypted = settings.getString("password", "");
+        loginCredentials.setStoreCredentials(settings.getBoolean("storecredentials", false));
 
         //decrypt password: more info in https://github.com/tozny/java-aes-crypto
         String userDecrypted = "";
@@ -126,6 +128,16 @@ public class SessionDataSourceSharedPreferences implements SessionDataSource {
         loginCredentials.setPassword(passDecrypted);
 
         return loginCredentials;
+    }
+
+    @Override
+    public void removeCredentials() {
+        SharedPreferences settings = context.getSharedPreferences(AUTHORIZE_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove("username");
+        editor.remove("password");
+        editor.putBoolean("storecredentials", false);
+        editor.commit();
     }
 
     @Override

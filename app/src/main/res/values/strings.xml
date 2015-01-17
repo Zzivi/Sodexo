@@ -8,6 +8,7 @@
 	<string name="password_hint">contraseña</string>
     <string name="login_warning_hint">Informa tu usuario</string>
     <string name="password_warning_hint">Informa tu contraseña</string>
+    <string name="recordar_credenciales">Recordar credenciales</string>
     <string name="zerocase_cardbalance_list">No tienes tarjetas registradas</string>
 
     <!-- API Error descriptions -->

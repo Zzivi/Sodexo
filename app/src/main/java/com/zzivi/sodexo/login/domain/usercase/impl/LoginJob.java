@@ -39,7 +39,11 @@ public class LoginJob extends UserCaseJob implements Login {
     @Override
     public void doRun() throws Throwable {
         try {
-            sessionDataSource.storeCredentials(loginCredentials);
+            if (loginCredentials.isStoreCredentials()) {
+                sessionDataSource.storeCredentials(loginCredentials);
+            } else {
+                sessionDataSource.removeCredentials();
+            }
             loginDataSource.getCookies(loginCredentials);
             notifyLoginComplete(true, 0);
         } catch (ApiUnauthorizedException ex) {
