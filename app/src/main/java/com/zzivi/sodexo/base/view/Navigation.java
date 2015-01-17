@@ -3,6 +3,7 @@ package com.zzivi.sodexo.base.view;
 import android.content.Intent;
 import android.util.Log;
 
+import com.zzivi.sodexo.BuildConfig;
 import com.zzivi.sodexo.base.datasource.sharedpreferences.SessionDataSource;
 import com.zzivi.sodexo.base.view.activity.BaseActivity;
 import com.zzivi.sodexo.cardsbalance.view.activity.phone.CardsBalanceActivity;
@@ -34,6 +35,13 @@ public class Navigation {
             Intent intent = new Intent(originActivity.getBaseContext(), CardsBalanceActivity.class);
             originActivity.startActivity(intent);
             originActivity.finish();
+        }
+    }
+
+
+    public void checkAppVersion(){
+        if (BuildConfig.VERSION_CODE < 2) {
+            loginCookieDataSource.removeCredentials();
         }
     }
 
