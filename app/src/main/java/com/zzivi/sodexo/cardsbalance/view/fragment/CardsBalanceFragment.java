@@ -3,6 +3,7 @@ package com.zzivi.sodexo.cardsbalance.view.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.crashlytics.android.Crashlytics;
 import com.zzivi.sodexo.R;
 import com.zzivi.sodexo.base.view.activity.BaseActivity;
 import com.zzivi.sodexo.base.view.fragment.BaseFragment;
@@ -74,6 +76,7 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
             //zeroFound.setVisibility(View.VISIBLE);
             //zeroFound.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
             redirectToLogin(getActivity());
+            Crashlytics.log(Log.ERROR, "Zzivi", "NO CARDS FOUND");
             getActivity().finish();
         } else {
             cards.setAdapter(new CardBalanceListAdapter(getActivity(), cardsBalances));

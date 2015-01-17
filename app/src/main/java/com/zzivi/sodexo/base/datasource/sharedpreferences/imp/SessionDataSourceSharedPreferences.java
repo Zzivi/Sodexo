@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
 import com.zzivi.sodexo.base.daggerutils.ForApplication;
 import com.zzivi.sodexo.base.datasource.sharedpreferences.SessionDataSource;
 import com.zzivi.sodexo.base.crypto.AesCbcWithIntegrity;
@@ -60,6 +61,7 @@ public class SessionDataSourceSharedPreferences implements SessionDataSource {
 
     @Override
     public void storeCredentials(LoginCredentials loginCredentials) {
+        Crashlytics.setUserIdentifier(loginCredentials.getUsername());
         String salt = "";
         AesCbcWithIntegrity.CipherTextIvMac userEncrypted = null;
         AesCbcWithIntegrity.CipherTextIvMac passEncrypted = null;
@@ -70,8 +72,12 @@ public class SessionDataSourceSharedPreferences implements SessionDataSource {
             userEncrypted = AesCbcWithIntegrity.encrypt(loginCredentials.getUsername(), key);
             passEncrypted = AesCbcWithIntegrity.encrypt(loginCredentials.getPassword(), key);
         } catch (GeneralSecurityException e) {
+            Crashlytics.log(Log.ERROR, "Zzivi", "GeneralSecurityException Encoding credentials");
+            Crashlytics.logException(e);
             Log.e("Zzivi", "GeneralSecurityException", e);
         } catch (UnsupportedEncodingException e) {
+            Crashlytics.log(Log.ERROR, "Zzivi", "UnsupportedEncodingException Encoding credentials");
+            Crashlytics.logException(e);
             Log.e("Zzivi", "UnsupportedEncodingException", e);
         }
 
@@ -107,8 +113,12 @@ public class SessionDataSourceSharedPreferences implements SessionDataSource {
                 }
             }
         } catch (GeneralSecurityException e) {
+            Crashlytics.log(Log.ERROR, "Zzivi", "GeneralSecurityException Decoding credentials");
+            Crashlytics.logException(e);
             Log.e("Zzivi", "GeneralSecurityException", e);
         } catch (UnsupportedEncodingException e) {
+            Crashlytics.log(Log.ERROR, "Zzivi", "UnsupportedEncodingException Decoding credentials");
+            Crashlytics.logException(e);
             Log.e("Zzivi", "UnsupportedEncodingException", e);
         }
 
