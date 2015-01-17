@@ -23,6 +23,7 @@ public class BaseActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         inject(this);
         ButterKnife.inject(this);
+        navigation.checkAppVersion();
         navigation.checkLogin(this);
     }
 
