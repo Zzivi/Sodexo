@@ -20,4 +20,6 @@ public interface SessionDataSource {
     public void storeCredentials(LoginCredentials LoginCredentials);
 
     public LoginCredentials obtainCredentials();
+
+    public void removeCredentials();
 }

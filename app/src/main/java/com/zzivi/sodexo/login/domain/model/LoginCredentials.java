@@ -6,6 +6,15 @@ package com.zzivi.sodexo.login.domain.model;
 public class LoginCredentials {
     String username;
     String password;
+    boolean storeCredentials;
+
+    public boolean isStoreCredentials() {
+        return storeCredentials;
+    }
+
+    public void setStoreCredentials(boolean storeCredentials) {
+        this.storeCredentials = storeCredentials;
+    }
 
     public String getUsername() {
         return username;

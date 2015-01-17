@@ -44,14 +44,23 @@
         android:padding="@dimen/gap_mhigh"
         android:singleLine="true" />
 
+    <CheckBox android:id="@+id/checkbox_recordar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recordar_credenciales"
+        android:layout_marginTop="@dimen/gap_small"
+        android:layout_marginLeft="@dimen/gap_medium"
+        style="@style/CheckBoxHoloColorsAppTheme"
+    />
+
     <Button
         android:id="@+id/bt_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/gap_medium"
         android:layout_marginRight="@dimen/gap_medium"
-        android:layout_marginTop="@dimen/gap_medium"
-        android:padding="@dimen/gap_mhigh"
+        android:layout_marginTop="@dimen/gap_xhigh"
+        android:padding = "@dimen/gap_mhigh"
         style="@style/ButtonHoloColorsAppTheme"
         android:textAllCaps="true"
         android:text="@string/acceder" />
