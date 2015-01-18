@@ -38,13 +38,6 @@ public class Navigation {
         }
     }
 
-
-    public void checkAppVersion(){
-        if (BuildConfig.VERSION_CODE < 2) {
-            loginCookieDataSource.removeCredentials();
-        }
-    }
-
     public void cleanCredentials(){
         loginCookieDataSource.setLoggedIn(false);
         loginCookieDataSource.deleteLoginCookie();
