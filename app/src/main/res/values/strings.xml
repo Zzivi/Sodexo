@@ -10,6 +10,7 @@
     <string name="password_warning_hint">Informa tu contraseña</string>
     <string name="recordar_credenciales">Recordar credenciales</string>
     <string name="zerocase_cardbalance_list">No tienes tarjetas registradas</string>
+    <string name="banner_ad_unit_id">ca-app-pub-6387859470394765/6175918139</string>
 
     <!-- API Error descriptions -->
     <string name="ApiUnauthorizedException">El e-mail o la contraseña son incorrectos</string>

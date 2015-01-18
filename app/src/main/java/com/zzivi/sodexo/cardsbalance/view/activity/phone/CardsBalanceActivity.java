@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import com.zzivi.sodexo.R;
 import com.zzivi.sodexo.base.view.activity.BaseActivity;
+import com.zzivi.sodexo.base.view.fragment.AdFragment;
 import com.zzivi.sodexo.cardsbalance.view.fragment.CardsBalanceFragment;
 
 
@@ -16,18 +17,22 @@ import com.zzivi.sodexo.cardsbalance.view.fragment.CardsBalanceFragment;
 public class CardsBalanceActivity extends BaseActivity {
 
     private CardsBalanceFragment cardsBalanceFragment;
+    private AdFragment adFragment;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_cardsbalance);
         if (savedInstanceState == null) {
             cardsBalanceFragment = new CardsBalanceFragment();
+            adFragment = new AdFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, cardsBalanceFragment)
+                    .add(R.id.balance, cardsBalanceFragment)
+                    .add(R.id.adFragment, adFragment)
                     .commit();
-        }
+         }
+
     }
 
     @Override
