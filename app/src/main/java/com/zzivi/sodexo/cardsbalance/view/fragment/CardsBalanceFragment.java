@@ -76,7 +76,6 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
             //zeroFound.setVisibility(View.VISIBLE);
             //zeroFound.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
             redirectToLogin(getActivity());
-            Crashlytics.log(Log.ERROR, "Zzivi", "NO CARDS FOUND");
             getActivity().finish();
         } else {
             cards.setAdapter(new CardBalanceListAdapter(getActivity(), cardsBalances));
