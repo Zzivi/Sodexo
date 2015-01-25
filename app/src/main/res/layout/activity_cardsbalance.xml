@@ -6,15 +6,14 @@
     tools:context=".CardsBalanceActivity"
     tools:ignore="MergeRootFrame">
 
-    <fragment android:name="com.zzivi.sodexo.cardsbalance.view.fragment.CardsBalanceFragment"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/balance"
+        android:id="@+id/balanceFragment"
         android:layout_above="@+id/adFragment" />
 
-    <fragment
+    <FrameLayout
         android:id="@+id/adFragment"
-        android:name="com.zzivi.sodexo.base.view.fragment.AdFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />

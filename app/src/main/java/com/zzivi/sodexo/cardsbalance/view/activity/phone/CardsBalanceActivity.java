@@ -28,7 +28,7 @@ public class CardsBalanceActivity extends BaseActivity {
             cardsBalanceFragment = new CardsBalanceFragment();
             adFragment = new AdFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.balance, cardsBalanceFragment)
+                    .add(R.id.balanceFragment, cardsBalanceFragment)
                     .add(R.id.adFragment, adFragment)
                     .commit();
          }
