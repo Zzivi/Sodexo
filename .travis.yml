@@ -1,0 +1,23 @@
+language: android
+script: ./gradlew build
+android:
+  components:
+  - build-tools-20.0.0
+  - android-19
+
+deploy:
+  provider: releases
+  api_key:
+    secure: hoKVnWoi/UgORzTvXiSi1E53HJAu3DK6w39Ogcd+pcY2XsOeFe55WRcryoHJC/7bB28gVZP0rY6599/nfVXTfq6paQzm8/j0vPhhoS7H340WwpCuexhdhkJwEJdc7AqCAoReEIeXW6Ni66APyYNOi39/t/UjN5lgQieRG+VKokiu4qAjiokyp9H3z2PTfgh1pKNjgF6nLmsDlllzWgMWR4F1VmpPUJJgSbxRCKIv2KelrPU3IWSfMHzbg+acLnC0M4Yur5LSTHtyUaMa52J1ccG1vq8a+iZjFXIifQclwiHqtDFbheO96nfBQ/StSGU8ZDIzctEH20t49rkuFSBChjCZyr/MqkWzD9610Gmc0QPdn4snP+7RLKFV+7d9cldcvlotO2swW78tcz/jKbD8CbQ1s237RZ6cF8nbwUoolCzLts0GmZZS2CqbsWheuAEx2kknttnhBSMI0COlWpu3acvB6ZiDFsWm/kqM6orO9yB0JxNruEtUZPkg3PLF46v9EgDNUkDC+LyP/5LvrQs/ZHTJU43/ixWBiXEE0PVyrPhDyrjYXd3yO3f1l4uTE3n8RbddVfNOvhgMnTGzrvftsnVFlsY+lwWQG6eVOFVv4a3rzwFm5RiTfCIca8YuOrkXN7sd12yCmyOxDJSuk/t8UMIu29jbEnIzVhU8HUYezkM=
+  file: app/build/outputs/apk/app-debug.apk
+  on:
+    repo: Zzivi/Sodexo
+    tags: true
+    all_branches: true
+
+notifications:
+  email:
+    recipients:
+    - daniel.viorreta@zzivi.com
+    on_success: always
+    on_failure: always
