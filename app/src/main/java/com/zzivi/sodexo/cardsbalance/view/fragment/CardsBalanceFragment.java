@@ -62,6 +62,7 @@ public class CardsBalanceFragment extends BaseFragment implements CardsBalanceCo
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         cardsBalanceController.setView(this);
+        loginController.setView(this);
         showCardsBalance();
     }
 
