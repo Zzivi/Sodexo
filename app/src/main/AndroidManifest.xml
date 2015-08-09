@@ -27,6 +27,9 @@
         <activity android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="cea22c59506dbcbd35ac8e7cf327cbf3011fd431" />
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
