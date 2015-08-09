@@ -46,12 +46,16 @@ public class LoginController {
         home.home(homeCompleteCallback);
     }
 
+    public void login (LoginCredentials credentials) {
+        login.login(credentials, loginCompleteCallback );
+    }
+
     public void login (String username, String password, boolean storeCredentials){
         LoginCredentials credentials = new LoginCredentials();
         credentials.setUsername(username);
         credentials.setPassword(password);
         credentials.setStoreCredentials(storeCredentials);
-        login.login(credentials, loginCompleteCallback );
+        this.login(credentials);
     }
 
     public void openCardsBalance(Activity context) {
