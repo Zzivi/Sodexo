@@ -29,7 +29,7 @@
             android:theme="@android:style/Theme.Translucent" />
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="cea22c59506dbcbd35ac8e7cf327cbf3011fd431" />
+            android:value="14c59e47317bbbd1b588f1be064088ac3b42c985" />
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

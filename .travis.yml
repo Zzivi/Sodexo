@@ -19,5 +19,6 @@ notifications:
   email:
     recipients:
     - daniel.viorreta@zzivi.com
+    - romina.liuzzi@zzivi.com
     on_success: always
     on_failure: always
