@@ -32,17 +32,18 @@ public class CardBalanceMapper {
         //parse html to obtain cards balances
         List<CardBalanceResultModel> cardsBalance = new CopyOnWriteArrayList<CardBalanceResultModel>();
         org.jsoup.nodes.Document doc = Jsoup.parse(html);
-        Elements trs = doc.getElementsByTag("tr");
-        for(Element tr : trs){
+        Elements hrefs = doc.getElementsByTag("a");
+        for(Element href : hrefs){
             CardBalanceResultModel cardBalanceResult = new CardBalanceResultModel();
-            Elements tarjetas = tr.getElementsByClass("tarjetaTipo");
+            Elements tarjetas = href.getElementsByClass("select-tarjetas");
+
             if(tarjetas.size()>0){
-                cardBalanceResult.setCardName(tarjetas.get(0).text());
+                String linkHref = tarjetas.text();
+                String[] splited = linkHref.split("\\s+");
+                cardBalanceResult.setCardName(splited[1]);
+                cardBalanceResult.setCardBalance(splited[splited.length - 2]);
             }
-            Elements saldos = tr.getElementsByClass("tarjetaSaldo");
-            if(saldos.size()>0){
-                cardBalanceResult.setCardBalance(saldos.get(0).text());
-            }
+
             if(cardBalanceResult!=null && cardBalanceResult.getCardName()!=null && cardBalanceResult.getCardBalance()!=null) {
                 cardsBalance.add(cardBalanceResult);
 
