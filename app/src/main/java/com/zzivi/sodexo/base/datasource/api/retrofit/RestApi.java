@@ -12,11 +12,11 @@ import retrofit.http.POST;
 public interface RestApi {
 
     @FormUrlEncoded
-    @POST("/login")
+    @POST("/lib/login.php")
     public Response login(@Field("usr") String username, @Field("pwd-login") String password,
                @Field("pwdaux") String pwdaux, @Field("mantenerSesion") String mantenerSesion);
 
-    @GET("/includes/modulo-saldos-tarjeta.php")
+    @GET("/mis-servicios-tarjetas")
     public Response getCardsBalance();
 
     @GET("/")
